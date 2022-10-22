@@ -3,8 +3,9 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-define e = Character("Eileen")
+define i character("Idol")
 
+image idol sprite = im.Scale("lvl1 pop star wip.png", 563, 1000)
 
 # The game starts here.
 
@@ -20,7 +21,7 @@ label start:
     # replace it by adding a file named "eileen happy.png" to the images
     # directory.
 
-    show eileen happy
+    show i happy
 
     # These display lines of dialogue.
 
