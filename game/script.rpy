@@ -3,7 +3,7 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-define i character("Idol")
+define i = Character("Idol")
 define a = Character("???")
 
 image tutorial sprite = im.Scale("tutorial_girl_fullbody.png", 563, 1000)
