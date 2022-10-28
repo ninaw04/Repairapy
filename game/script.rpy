@@ -6,9 +6,10 @@
 define i = Character("Idol")
 define a = Character("???")
 
-image tutorial sprite = im.Scale("tutorial_girl_fullbody.png", 563, 1000)
+image tutorial sprite = im.Scale("images/character_sprites/tutorial_girl/tutorial_girl_fullbody.png", 563, 1000)
 
 image idol sprite = im.Scale("lvl1 pop star wip.png", 563, 1000)
+
 
 # The game starts here.
 
@@ -24,13 +25,13 @@ label start:
     # replace it by adding a file named "eileen happy.png" to the images
     # directory.
 
-    show eileen happy
+    show tutorial sprite
 
     # These display lines of dialogue.
 
     a "Hello...?"
 
-    e "Once you add a story, pictures, and music, you can release it to the world!"
+    #e "Once you add a story, pictures, and music, you can release it to the world!"
 
     # This ends the game.
 

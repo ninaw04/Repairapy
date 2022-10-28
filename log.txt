@@ -1,4 +1,4 @@
-Thu Oct 27 12:26:21 2022
+Thu Oct 27 16:59:19 2022
 macOS-10.16-x86_64-i386-64bit
 Ren'Py 8.0.3.22090809
  
@@ -7,7 +7,49 @@ Bootstrap to the start of init.init took 0.05s
 Early init took 0.00s
 Loader init took 0.01s
 Loading error handling took 0.03s
-Loading script took 0.12s
+Loading script took 0.14s
+Loading save slot metadata. took 0.00s
+Loading persistent took 0.00s
+Faled to initialize steam: OSError("dlopen(/Applications/renpy-8.0.3-sdk/lib/py3-mac-x86_64/libsteam_api.dylib, 0x0006): tried: '/Applications/renpy-8.0.3-sdk/lib/py3-mac-x86_64/libsteam_api.dylib' (no such file)")
+Running init code took 0.04s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Index archives took 0.00s
+Dump and make backups. took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.01s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.03s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.06s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.03s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.15s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1680, 1050)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon Pro 555X OpenGL Engine'
+Version: b'2.1 ATI-4.8.101'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1353, 761) drawable=(2706, 1522)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 103.90s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.03s
+Loading script took 0.10s
 Loading save slot metadata. took 0.00s
 Loading persistent took 0.00s
 Faled to initialize steam: OSError("dlopen(/Applications/renpy-8.0.3-sdk/lib/py3-mac-x86_64/libsteam_api.dylib, 0x0006): tried: '/Applications/renpy-8.0.3-sdk/lib/py3-mac-x86_64/libsteam_api.dylib' (no such file)")
@@ -16,10 +58,119 @@ Loading analysis data took 0.01s
 Analyze and compile ATL took 0.00s
 Index archives took 0.00s
 Backing up script files to '/Users/ninawang/Library/RenPy/backups/Repairapy':
-Dump and make backups. took 0.04s
+Dump and make backups. took 0.05s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
 Initial gc. took 0.02s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.06s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.06s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1680, 1050)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon Pro 555X OpenGL Engine'
+Version: b'2.1 ATI-4.8.101'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1353, 761) drawable=(2706, 1522)
+Maximum texture size: 4096x4096
+
+Full traceback:
+  File "game/script.rpy", line 31, in script
+    a "Hello...?"
+  File "/Applications/renpy-8.0.3-sdk/renpy/ast.py", line 921, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "/Applications/renpy-8.0.3-sdk/renpy/exports.py", line 1373, in say
+    who(what, *args, **kwargs)
+  File "/Applications/renpy-8.0.3-sdk/renpy/character.py", line 1266, in __call__
+    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
+  File "/Applications/renpy-8.0.3-sdk/renpy/character.py", line 927, in do_display
+    display_say(who,
+  File "/Applications/renpy-8.0.3-sdk/renpy/character.py", line 666, in display_say
+    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
+  File "/Applications/renpy-8.0.3-sdk/renpy/ui.py", line 299, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/core.py", line 3377, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/core.py", line 3912, in interact_core
+    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/core.py", line 2602, in draw_screen
+    surftree = renpy.display.render.render_screen(
+  File "render.pyx", line 495, in renpy.display.render.render_screen
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/layout.py", line 884, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/layout.py", line 884, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/layout.py", line 884, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/transform.py", line 747, in render
+    return transform_render(self, width, height, st, at)
+  File "accelerator.pyx", line 187, in renpy.display.accelerator.transform_render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/image.py", line 506, in render
+    return wrap_render(self.target, width, height, st, at)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/image.py", line 309, in wrap_render
+    rend = render(child, w, h, st, at)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 627, in render
+    return cache.get(self, render=True)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 295, in get
+    surf = image.load()
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 890, in load
+    child = cache.get(self.image)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 295, in get
+    surf = image.load()
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 720, in load
+    raise e
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 685, in load
+    filelike = renpy.loader.load(self.filename)
+  File "/Applications/renpy-8.0.3-sdk/renpy/loader.py", line 820, in load
+    raise IOError("Couldn't find file '%s'." % name)
+OSError: Couldn't find file 'tutorial_girl_fullbody.png'.
+
+While loading <renpy.display.im.Scale object at 0x7fa995710fa0>:
+  File "game/script.rpy", line 31, in script
+    a "Hello...?"
+OSError: Couldn't find file 'tutorial_girl_fullbody.png'.
+Resetting cache.
+Bootstrap to the start of init.init took 140.31s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.02s
+Loading script took 0.07s
+Loading save slot metadata. took 0.00s
+Loading persistent took 0.00s
+Faled to initialize steam: OSError("dlopen(/Applications/renpy-8.0.3-sdk/lib/py3-mac-x86_64/libsteam_api.dylib, 0x0006): tried: '/Applications/renpy-8.0.3-sdk/lib/py3-mac-x86_64/libsteam_api.dylib' (no such file)")
+Running init code took 0.02s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Index archives took 0.00s
+Backing up script files to '/Users/ninawang/Library/RenPy/backups/Repairapy':
+Dump and make backups. took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.03s
 DPI scale factor: 1.000000
 Creating interface object took 0.00s
 Cleaning stores took 0.00s
@@ -33,7 +184,7 @@ Save pyanalysis. took 0.00s
 Save bytecode. took 0.02s
 Running _start took 0.00s
 Performance test:
-Interface start took 0.14s
+Interface start took 0.06s
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 1680, 1050)
@@ -45,3 +196,959 @@ Version: b'2.1 ATI-4.8.101'
 Display Info: None
 Screen sizes: virtual=(1920, 1080) physical=(1353, 761) drawable=(2706, 1522)
 Maximum texture size: 4096x4096
+
+Full traceback:
+  File "game/script.rpy", line 31, in script
+    a "Hello...?"
+  File "/Applications/renpy-8.0.3-sdk/renpy/ast.py", line 921, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "/Applications/renpy-8.0.3-sdk/renpy/exports.py", line 1373, in say
+    who(what, *args, **kwargs)
+  File "/Applications/renpy-8.0.3-sdk/renpy/character.py", line 1266, in __call__
+    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
+  File "/Applications/renpy-8.0.3-sdk/renpy/character.py", line 927, in do_display
+    display_say(who,
+  File "/Applications/renpy-8.0.3-sdk/renpy/character.py", line 666, in display_say
+    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
+  File "/Applications/renpy-8.0.3-sdk/renpy/ui.py", line 299, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/core.py", line 3377, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/core.py", line 3912, in interact_core
+    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/core.py", line 2602, in draw_screen
+    surftree = renpy.display.render.render_screen(
+  File "render.pyx", line 495, in renpy.display.render.render_screen
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/layout.py", line 884, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/layout.py", line 884, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/layout.py", line 884, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/transform.py", line 747, in render
+    return transform_render(self, width, height, st, at)
+  File "accelerator.pyx", line 187, in renpy.display.accelerator.transform_render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/image.py", line 506, in render
+    return wrap_render(self.target, width, height, st, at)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/image.py", line 309, in wrap_render
+    rend = render(child, w, h, st, at)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 627, in render
+    return cache.get(self, render=True)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 295, in get
+    surf = image.load()
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 890, in load
+    child = cache.get(self.image)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 295, in get
+    surf = image.load()
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 720, in load
+    raise e
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 685, in load
+    filelike = renpy.loader.load(self.filename)
+  File "/Applications/renpy-8.0.3-sdk/renpy/loader.py", line 820, in load
+    raise IOError("Couldn't find file '%s'." % name)
+OSError: Couldn't find file 'images/character_sprites/tutorial_girl_fullbody.png'.
+
+While loading <renpy.display.im.Scale object at 0x7fa99686fa60>:
+  File "game/script.rpy", line 31, in script
+    a "Hello...?"
+OSError: Couldn't find file 'images/character_sprites/tutorial_girl_fullbody.png'.
+Resetting cache.
+Bootstrap to the start of init.init took 175.21s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.02s
+Loading script took 0.08s
+Loading save slot metadata. took 0.00s
+Loading persistent took 0.00s
+Faled to initialize steam: OSError("dlopen(/Applications/renpy-8.0.3-sdk/lib/py3-mac-x86_64/libsteam_api.dylib, 0x0006): tried: '/Applications/renpy-8.0.3-sdk/lib/py3-mac-x86_64/libsteam_api.dylib' (no such file)")
+Running init code took 0.02s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Index archives took 0.00s
+Backing up script files to '/Users/ninawang/Library/RenPy/backups/Repairapy':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.03s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.06s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.07s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1680, 1050)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon Pro 555X OpenGL Engine'
+Version: b'2.1 ATI-4.8.101'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1353, 761) drawable=(2706, 1522)
+Maximum texture size: 4096x4096
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.03s
+Analyze screens took 0.00s
+Prepare screens took 0.00s
+Running _start took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.03s
+Analyze screens took 0.00s
+Prepare screens took 0.00s
+Running _start took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.00s
+Prepare screens took 0.00s
+Running _start took 0.00s
+Resetting cache.
+Bootstrap to the start of init.init took 235.60s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.02s
+Loading script took 0.07s
+Loading save slot metadata. took 0.00s
+Loading persistent took 0.00s
+
+File "game/script.rpy", line 22: end of line expected.
+    scene bg interior_sketch.png
+                            ^
+DPI scale factor: 1.000000
+Interface start took 0.10s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1680, 1050)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon Pro 555X OpenGL Engine'
+Version: b'2.1 ATI-4.8.101'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1353, 761) drawable=(2706, 1522)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 244.81s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.02s
+Loading script took 0.07s
+Loading save slot metadata. took 0.00s
+Loading persistent took 0.00s
+Faled to initialize steam: OSError("dlopen(/Applications/renpy-8.0.3-sdk/lib/py3-mac-x86_64/libsteam_api.dylib, 0x0006): tried: '/Applications/renpy-8.0.3-sdk/lib/py3-mac-x86_64/libsteam_api.dylib' (no such file)")
+Running init code took 0.04s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Index archives took 0.00s
+Backing up script files to '/Users/ninawang/Library/RenPy/backups/Repairapy':
+Dump and make backups. took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.02s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.06s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1680, 1050)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon Pro 555X OpenGL Engine'
+Version: b'2.1 ATI-4.8.101'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1353, 761) drawable=(2706, 1522)
+Maximum texture size: 4096x4096
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.00s
+Prepare screens took 0.00s
+Running _start took 0.00s
+Resetting cache.
+Bootstrap to the start of init.init took 276.58s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.02s
+Loading script took 0.07s
+Loading save slot metadata. took 0.00s
+Loading persistent took 0.00s
+Faled to initialize steam: OSError("dlopen(/Applications/renpy-8.0.3-sdk/lib/py3-mac-x86_64/libsteam_api.dylib, 0x0006): tried: '/Applications/renpy-8.0.3-sdk/lib/py3-mac-x86_64/libsteam_api.dylib' (no such file)")
+Running init code took 0.02s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Index archives took 0.00s
+Dump and make backups. took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.03s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.03s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.06s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.00s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.07s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1680, 1050)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon Pro 555X OpenGL Engine'
+Version: b'2.1 ATI-4.8.101'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1353, 761) drawable=(2706, 1522)
+Maximum texture size: 4096x4096
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.03s
+Analyze screens took 0.00s
+Prepare screens took 0.00s
+Running _start took 0.00s
+Resetting cache.
+Bootstrap to the start of init.init took 285.91s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.02s
+Loading script took 0.07s
+Loading save slot metadata. took 0.00s
+Loading persistent took 0.00s
+Faled to initialize steam: OSError("dlopen(/Applications/renpy-8.0.3-sdk/lib/py3-mac-x86_64/libsteam_api.dylib, 0x0006): tried: '/Applications/renpy-8.0.3-sdk/lib/py3-mac-x86_64/libsteam_api.dylib' (no such file)")
+Running init code took 0.02s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Index archives took 0.00s
+Backing up script files to '/Users/ninawang/Library/RenPy/backups/Repairapy':
+Dump and make backups. took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.03s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.06s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.06s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1680, 1050)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon Pro 555X OpenGL Engine'
+Version: b'2.1 ATI-4.8.101'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1353, 761) drawable=(2706, 1522)
+Maximum texture size: 4096x4096
+
+Full traceback:
+  File "game/script.rpy", line 32, in script
+    a "Hello...?"
+  File "/Applications/renpy-8.0.3-sdk/renpy/ast.py", line 921, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "/Applications/renpy-8.0.3-sdk/renpy/exports.py", line 1373, in say
+    who(what, *args, **kwargs)
+  File "/Applications/renpy-8.0.3-sdk/renpy/character.py", line 1266, in __call__
+    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
+  File "/Applications/renpy-8.0.3-sdk/renpy/character.py", line 927, in do_display
+    display_say(who,
+  File "/Applications/renpy-8.0.3-sdk/renpy/character.py", line 666, in display_say
+    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
+  File "/Applications/renpy-8.0.3-sdk/renpy/ui.py", line 299, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/core.py", line 3377, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/core.py", line 3912, in interact_core
+    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/core.py", line 2602, in draw_screen
+    surftree = renpy.display.render.render_screen(
+  File "render.pyx", line 495, in renpy.display.render.render_screen
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/layout.py", line 884, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/layout.py", line 884, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/layout.py", line 884, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/transform.py", line 747, in render
+    return transform_render(self, width, height, st, at)
+  File "accelerator.pyx", line 187, in renpy.display.accelerator.transform_render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/image.py", line 506, in render
+    return wrap_render(self.target, width, height, st, at)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/image.py", line 309, in wrap_render
+    rend = render(child, w, h, st, at)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 627, in render
+    return cache.get(self, render=True)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 295, in get
+    surf = image.load()
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 720, in load
+    raise e
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 685, in load
+    filelike = renpy.loader.load(self.filename)
+  File "/Applications/renpy-8.0.3-sdk/renpy/loader.py", line 820, in load
+    raise IOError("Couldn't find file '%s'." % name)
+OSError: Couldn't find file 'images/interior_sketch.png'.
+
+While loading <renpy.display.im.Image object ('images/interior_sketch.png') at 0x7fa9957972e0>:
+  File "game/script.rpy", line 32, in script
+    a "Hello...?"
+OSError: Couldn't find file 'images/interior_sketch.png'.
+Resetting cache.
+Bootstrap to the start of init.init took 316.33s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.02s
+Loading script took 0.08s
+Loading save slot metadata. took 0.00s
+Loading persistent took 0.00s
+Faled to initialize steam: OSError("dlopen(/Applications/renpy-8.0.3-sdk/lib/py3-mac-x86_64/libsteam_api.dylib, 0x0006): tried: '/Applications/renpy-8.0.3-sdk/lib/py3-mac-x86_64/libsteam_api.dylib' (no such file)")
+Running init code took 0.02s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Index archives took 0.00s
+Backing up script files to '/Users/ninawang/Library/RenPy/backups/Repairapy':
+Dump and make backups. took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.03s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.06s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.07s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1680, 1050)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon Pro 555X OpenGL Engine'
+Version: b'2.1 ATI-4.8.101'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1353, 761) drawable=(2706, 1522)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 447.53s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.02s
+Loading script took 0.07s
+Loading save slot metadata. took 0.00s
+Loading persistent took 0.00s
+Faled to initialize steam: OSError("dlopen(/Applications/renpy-8.0.3-sdk/lib/py3-mac-x86_64/libsteam_api.dylib, 0x0006): tried: '/Applications/renpy-8.0.3-sdk/lib/py3-mac-x86_64/libsteam_api.dylib' (no such file)")
+Running init code took 0.03s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Index archives took 0.00s
+Dump and make backups. took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.03s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.03s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.06s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.00s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.07s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1680, 1050)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon Pro 555X OpenGL Engine'
+Version: b'2.1 ATI-4.8.101'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1353, 761) drawable=(2706, 1522)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 586.27s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.02s
+Loading script took 0.08s
+Loading save slot metadata. took 0.00s
+Loading persistent took 0.00s
+Faled to initialize steam: OSError("dlopen(/Applications/renpy-8.0.3-sdk/lib/py3-mac-x86_64/libsteam_api.dylib, 0x0006): tried: '/Applications/renpy-8.0.3-sdk/lib/py3-mac-x86_64/libsteam_api.dylib' (no such file)")
+Running init code took 0.03s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Index archives took 0.00s
+Backing up script files to '/Users/ninawang/Library/RenPy/backups/Repairapy':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.03s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.06s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.07s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1680, 1050)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon Pro 555X OpenGL Engine'
+Version: b'2.1 ATI-4.8.101'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1353, 761) drawable=(2706, 1522)
+Maximum texture size: 4096x4096
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.03s
+Analyze screens took 0.00s
+Prepare screens took 0.00s
+Running _start took 0.00s
+
+Full traceback:
+  File "game/script.rpy", line 32, in script
+    a "Hello...?"
+  File "/Applications/renpy-8.0.3-sdk/renpy/ast.py", line 921, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "/Applications/renpy-8.0.3-sdk/renpy/exports.py", line 1373, in say
+    who(what, *args, **kwargs)
+  File "/Applications/renpy-8.0.3-sdk/renpy/character.py", line 1266, in __call__
+    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
+  File "/Applications/renpy-8.0.3-sdk/renpy/character.py", line 927, in do_display
+    display_say(who,
+  File "/Applications/renpy-8.0.3-sdk/renpy/character.py", line 666, in display_say
+    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
+  File "/Applications/renpy-8.0.3-sdk/renpy/ui.py", line 299, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/core.py", line 3377, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/core.py", line 3912, in interact_core
+    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/core.py", line 2602, in draw_screen
+    surftree = renpy.display.render.render_screen(
+  File "render.pyx", line 495, in renpy.display.render.render_screen
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/layout.py", line 884, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/layout.py", line 884, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/layout.py", line 884, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/transform.py", line 747, in render
+    return transform_render(self, width, height, st, at)
+  File "accelerator.pyx", line 187, in renpy.display.accelerator.transform_render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/image.py", line 506, in render
+    return wrap_render(self.target, width, height, st, at)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/image.py", line 309, in wrap_render
+    rend = render(child, w, h, st, at)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 627, in render
+    return cache.get(self, render=True)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 295, in get
+    surf = image.load()
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 890, in load
+    child = cache.get(self.image)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 295, in get
+    surf = image.load()
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 720, in load
+    raise e
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 685, in load
+    filelike = renpy.loader.load(self.filename)
+  File "/Applications/renpy-8.0.3-sdk/renpy/loader.py", line 820, in load
+    raise IOError("Couldn't find file '%s'." % name)
+OSError: Couldn't find file 'images/character_sprites/tutorial_girl/tutorial_girl_fullbody.png'.
+
+While loading <renpy.display.im.Scale object at 0x7fa980af4070>:
+  File "game/script.rpy", line 32, in script
+    a "Hello...?"
+OSError: Couldn't find file 'images/character_sprites/tutorial_girl/tutorial_girl_fullbody.png'.
+Resetting cache.
+Bootstrap to the start of init.init took 711.48s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.02s
+Loading script took 0.07s
+Loading save slot metadata. took 0.00s
+Loading persistent took 0.00s
+Faled to initialize steam: OSError("dlopen(/Applications/renpy-8.0.3-sdk/lib/py3-mac-x86_64/libsteam_api.dylib, 0x0006): tried: '/Applications/renpy-8.0.3-sdk/lib/py3-mac-x86_64/libsteam_api.dylib' (no such file)")
+Running init code took 0.02s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Index archives took 0.00s
+Backing up script files to '/Users/ninawang/Library/RenPy/backups/Repairapy':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.04s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.06s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.07s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1680, 1050)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon Pro 555X OpenGL Engine'
+Version: b'2.1 ATI-4.8.101'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1353, 761) drawable=(2706, 1522)
+Maximum texture size: 4096x4096
+
+Full traceback:
+  File "game/script.rpy", line 32, in script
+    a "Hello...?"
+  File "/Applications/renpy-8.0.3-sdk/renpy/ast.py", line 921, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "/Applications/renpy-8.0.3-sdk/renpy/exports.py", line 1373, in say
+    who(what, *args, **kwargs)
+  File "/Applications/renpy-8.0.3-sdk/renpy/character.py", line 1266, in __call__
+    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
+  File "/Applications/renpy-8.0.3-sdk/renpy/character.py", line 927, in do_display
+    display_say(who,
+  File "/Applications/renpy-8.0.3-sdk/renpy/character.py", line 666, in display_say
+    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
+  File "/Applications/renpy-8.0.3-sdk/renpy/ui.py", line 299, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/core.py", line 3377, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/core.py", line 3912, in interact_core
+    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/core.py", line 2602, in draw_screen
+    surftree = renpy.display.render.render_screen(
+  File "render.pyx", line 495, in renpy.display.render.render_screen
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/layout.py", line 884, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/layout.py", line 884, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/layout.py", line 884, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/transform.py", line 747, in render
+    return transform_render(self, width, height, st, at)
+  File "accelerator.pyx", line 187, in renpy.display.accelerator.transform_render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/image.py", line 506, in render
+    return wrap_render(self.target, width, height, st, at)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/image.py", line 309, in wrap_render
+    rend = render(child, w, h, st, at)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 627, in render
+    return cache.get(self, render=True)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 295, in get
+    surf = image.load()
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 890, in load
+    child = cache.get(self.image)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 295, in get
+    surf = image.load()
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 720, in load
+    raise e
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 685, in load
+    filelike = renpy.loader.load(self.filename)
+  File "/Applications/renpy-8.0.3-sdk/renpy/loader.py", line 820, in load
+    raise IOError("Couldn't find file '%s'." % name)
+OSError: Couldn't find file 'character_sprites/tutorial_girl/tutorial_girl_fullbody.png'.
+
+While loading <renpy.display.im.Scale object at 0x7fa994a23b20>:
+  File "game/script.rpy", line 32, in script
+    a "Hello...?"
+OSError: Couldn't find file 'character_sprites/tutorial_girl/tutorial_girl_fullbody.png'.
+Resetting cache.
+Bootstrap to the start of init.init took 716.33s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.02s
+Loading script took 0.07s
+Loading save slot metadata. took 0.00s
+Loading persistent took 0.00s
+Faled to initialize steam: OSError("dlopen(/Applications/renpy-8.0.3-sdk/lib/py3-mac-x86_64/libsteam_api.dylib, 0x0006): tried: '/Applications/renpy-8.0.3-sdk/lib/py3-mac-x86_64/libsteam_api.dylib' (no such file)")
+Running init code took 0.02s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Index archives took 0.00s
+Backing up script files to '/Users/ninawang/Library/RenPy/backups/Repairapy':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.03s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.06s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.08s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1680, 1050)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon Pro 555X OpenGL Engine'
+Version: b'2.1 ATI-4.8.101'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1353, 761) drawable=(2706, 1522)
+Maximum texture size: 4096x4096
+
+Full traceback:
+  File "game/script.rpy", line 32, in script
+    a "Hello...?"
+  File "/Applications/renpy-8.0.3-sdk/renpy/ast.py", line 921, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "/Applications/renpy-8.0.3-sdk/renpy/exports.py", line 1373, in say
+    who(what, *args, **kwargs)
+  File "/Applications/renpy-8.0.3-sdk/renpy/character.py", line 1266, in __call__
+    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
+  File "/Applications/renpy-8.0.3-sdk/renpy/character.py", line 927, in do_display
+    display_say(who,
+  File "/Applications/renpy-8.0.3-sdk/renpy/character.py", line 666, in display_say
+    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
+  File "/Applications/renpy-8.0.3-sdk/renpy/ui.py", line 299, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/core.py", line 3377, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/core.py", line 3912, in interact_core
+    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/core.py", line 2602, in draw_screen
+    surftree = renpy.display.render.render_screen(
+  File "render.pyx", line 495, in renpy.display.render.render_screen
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/layout.py", line 884, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/layout.py", line 884, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/layout.py", line 884, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/transform.py", line 747, in render
+    return transform_render(self, width, height, st, at)
+  File "accelerator.pyx", line 187, in renpy.display.accelerator.transform_render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/image.py", line 506, in render
+    return wrap_render(self.target, width, height, st, at)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/image.py", line 309, in wrap_render
+    rend = render(child, w, h, st, at)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 627, in render
+    return cache.get(self, render=True)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 295, in get
+    surf = image.load()
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 890, in load
+    child = cache.get(self.image)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 295, in get
+    surf = image.load()
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 720, in load
+    raise e
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 685, in load
+    filelike = renpy.loader.load(self.filename)
+  File "/Applications/renpy-8.0.3-sdk/renpy/loader.py", line 820, in load
+    raise IOError("Couldn't find file '%s'." % name)
+OSError: Couldn't find file 'images/character_sprites/tutorial_girl/tutorial_girl_fullbody.png'.
+
+While loading <renpy.display.im.Scale object at 0x7fa9957de4c0>:
+  File "game/script.rpy", line 32, in script
+    a "Hello...?"
+OSError: Couldn't find file 'images/character_sprites/tutorial_girl/tutorial_girl_fullbody.png'.
+Resetting cache.
+Bootstrap to the start of init.init took 727.15s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.02s
+Loading script took 0.07s
+Loading save slot metadata. took 0.00s
+Loading persistent took 0.00s
+Faled to initialize steam: OSError("dlopen(/Applications/renpy-8.0.3-sdk/lib/py3-mac-x86_64/libsteam_api.dylib, 0x0006): tried: '/Applications/renpy-8.0.3-sdk/lib/py3-mac-x86_64/libsteam_api.dylib' (no such file)")
+Running init code took 0.02s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Index archives took 0.00s
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.03s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.03s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.06s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.00s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.06s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1680, 1050)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon Pro 555X OpenGL Engine'
+Version: b'2.1 ATI-4.8.101'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1353, 761) drawable=(2706, 1522)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 810.21s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.02s
+Loading script took 0.08s
+Loading save slot metadata. took 0.00s
+Loading persistent took 0.00s
+Faled to initialize steam: OSError("dlopen(/Applications/renpy-8.0.3-sdk/lib/py3-mac-x86_64/libsteam_api.dylib, 0x0006): tried: '/Applications/renpy-8.0.3-sdk/lib/py3-mac-x86_64/libsteam_api.dylib' (no such file)")
+Running init code took 0.02s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Index archives took 0.00s
+Backing up script files to '/Users/ninawang/Library/RenPy/backups/Repairapy':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.03s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.06s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.07s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1680, 1050)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon Pro 555X OpenGL Engine'
+Version: b'2.1 ATI-4.8.101'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1353, 761) drawable=(2706, 1522)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 831.63s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.02s
+Loading script took 0.08s
+Loading save slot metadata. took 0.00s
+Loading persistent took 0.00s
+Faled to initialize steam: OSError("dlopen(/Applications/renpy-8.0.3-sdk/lib/py3-mac-x86_64/libsteam_api.dylib, 0x0006): tried: '/Applications/renpy-8.0.3-sdk/lib/py3-mac-x86_64/libsteam_api.dylib' (no such file)")
+Running init code took 0.03s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Index archives took 0.00s
+Backing up script files to '/Users/ninawang/Library/RenPy/backups/Repairapy':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.03s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.06s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.07s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1680, 1050)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon Pro 555X OpenGL Engine'
+Version: b'2.1 ATI-4.8.101'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1353, 761) drawable=(2706, 1522)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 838.00s
+Early init took 0.00s
+Loader init took 0.01s
+Loading error handling took 0.02s
+Loading script took 0.08s
+Loading save slot metadata. took 0.00s
+Loading persistent took 0.00s
+Faled to initialize steam: OSError("dlopen(/Applications/renpy-8.0.3-sdk/lib/py3-mac-x86_64/libsteam_api.dylib, 0x0006): tried: '/Applications/renpy-8.0.3-sdk/lib/py3-mac-x86_64/libsteam_api.dylib' (no such file)")
+Running init code took 0.03s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Index archives took 0.00s
+Backing up script files to '/Users/ninawang/Library/RenPy/backups/Repairapy':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.03s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.06s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.07s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1680, 1050)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon Pro 555X OpenGL Engine'
+Version: b'2.1 ATI-4.8.101'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1353, 761) drawable=(2706, 1522)
+Maximum texture size: 4096x4096
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.03s
+Analyze screens took 0.00s
+Prepare screens took 0.00s
+Running _start took 0.00s

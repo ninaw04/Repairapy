@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 6: expected '=' not found.
-    define i character("Idol")
-             ^
+File "game/script.rpy", line 22: end of line expected.
+    scene bg interior_sketch.png
+                            ^
 
 Ren'Py Version: Ren'Py 8.0.3.22090809
-Thu Oct 27 12:09:34 2022
+Thu Oct 27 17:03:15 2022
