@@ -1,28 +1,28 @@
-Thu Oct 27 18:19:43 2022
+Thu Oct 27 19:19:38 2022
 macOS-10.16-x86_64-i386-64bit
 Ren'Py 8.0.3.22090809
  
 
 Bootstrap to the start of init.init took 0.05s
-Early init took 0.00s
-Loader init took 0.01s
+Early init took 0.01s
+Loader init took 0.02s
 Loading error handling took 0.03s
-Loading script took 0.08s
-Loading save slot metadata. took 0.01s
+Loading script took 0.07s
+Loading save slot metadata. took 0.00s
 Loading persistent took 0.00s
 Faled to initialize steam: OSError("dlopen(/Applications/renpy-8.0.3-sdk/lib/py3-mac-x86_64/libsteam_api.dylib, 0x0006): tried: '/Applications/renpy-8.0.3-sdk/lib/py3-mac-x86_64/libsteam_api.dylib' (no such file)")
 Running init code took 0.03s
-Loading analysis data took 0.01s
+Loading analysis data took 0.02s
 Analyze and compile ATL took 0.00s
 Index archives took 0.00s
 Dump and make backups. took 0.04s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc. took 0.01s
+Initial gc. took 0.02s
 DPI scale factor: 1.000000
 Creating interface object took 0.00s
 Cleaning stores took 0.00s
-Init translation took 0.03s
+Init translation took 0.04s
 Build styles took 0.00s
 Load screen analysis took 0.03s
 Analyze screens took 0.00s
@@ -32,7 +32,7 @@ Save pyanalysis. took 0.00s
 Save bytecode. took 0.00s
 Running _start took 0.00s
 Performance test:
-Interface start took 0.15s
+Interface start took 0.17s
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 1680, 1050)
@@ -48,6 +48,13 @@ Cleaning stores took 0.00s
 Init translation took 0.00s
 Build styles took 0.00s
 Load screen analysis took 0.03s
+Analyze screens took 0.00s
+Prepare screens took 0.00s
+Running _start took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.02s
 Analyze screens took 0.00s
 Prepare screens took 0.00s
 Running _start took 0.00s
