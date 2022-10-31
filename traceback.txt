@@ -1,74 +1,66 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While loading <renpy.display.im.Scale object at 0x7fa9957de4c0>:
-  File "game/script.rpy", line 32, in script
+While loading <renpy.display.im.Image object (u'tutorial_girl.png') at 0x0000000002b6fbd0>:
+  File "game/script.rpy", line 37, in script
     a "Hello...?"
-OSError: Couldn't find file 'images/character_sprites/tutorial_girl/tutorial_girl_fullbody.png'.
+IOError: Couldn't find file 'tutorial_girl.png'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 32, in script
+  File "game/script.rpy", line 37, in script
     a "Hello...?"
-  File "/Applications/renpy-8.0.3-sdk/renpy/ast.py", line 921, in execute
+  File "renpy/ast.py", line 921, in execute
     renpy.exports.say(who, what, *args, **kwargs)
-  File "/Applications/renpy-8.0.3-sdk/renpy/exports.py", line 1373, in say
+  File "renpy/exports.py", line 1373, in say
     who(what, *args, **kwargs)
-  File "/Applications/renpy-8.0.3-sdk/renpy/character.py", line 1266, in __call__
+  File "renpy/character.py", line 1266, in __call__
     self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
-  File "/Applications/renpy-8.0.3-sdk/renpy/character.py", line 927, in do_display
-    display_say(who,
-  File "/Applications/renpy-8.0.3-sdk/renpy/character.py", line 666, in display_say
+  File "renpy/character.py", line 930, in do_display
+    **display_args)
+  File "renpy/character.py", line 666, in display_say
     rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
-  File "/Applications/renpy-8.0.3-sdk/renpy/ui.py", line 299, in interact
+  File "renpy/ui.py", line 299, in interact
     rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "/Applications/renpy-8.0.3-sdk/renpy/display/core.py", line 3377, in interact
+  File "renpy/display/core.py", line 3377, in interact
     repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
-  File "/Applications/renpy-8.0.3-sdk/renpy/display/core.py", line 3912, in interact_core
+  File "renpy/display/core.py", line 3912, in interact_core
     self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
-  File "/Applications/renpy-8.0.3-sdk/renpy/display/core.py", line 2602, in draw_screen
-    surftree = renpy.display.render.render_screen(
+  File "renpy/display/core.py", line 2605, in draw_screen
+    renpy.config.screen_height,
   File "render.pyx", line 495, in renpy.display.render.render_screen
   File "render.pyx", line 266, in renpy.display.render.render
-  File "/Applications/renpy-8.0.3-sdk/renpy/display/layout.py", line 884, in render
+  File "renpy/display/layout.py", line 884, in render
     surf = render(child, width, height, cst, cat)
   File "render.pyx", line 170, in renpy.display.render.render
   File "render.pyx", line 266, in renpy.display.render.render
-  File "/Applications/renpy-8.0.3-sdk/renpy/display/layout.py", line 884, in render
+  File "renpy/display/layout.py", line 884, in render
     surf = render(child, width, height, cst, cat)
   File "render.pyx", line 170, in renpy.display.render.render
   File "render.pyx", line 266, in renpy.display.render.render
-  File "/Applications/renpy-8.0.3-sdk/renpy/display/layout.py", line 884, in render
+  File "renpy/display/layout.py", line 884, in render
     surf = render(child, width, height, cst, cat)
   File "render.pyx", line 170, in renpy.display.render.render
   File "render.pyx", line 266, in renpy.display.render.render
-  File "/Applications/renpy-8.0.3-sdk/renpy/display/transform.py", line 747, in render
+  File "renpy/display/transform.py", line 747, in render
     return transform_render(self, width, height, st, at)
   File "accelerator.pyx", line 187, in renpy.display.accelerator.transform_render
   File "render.pyx", line 266, in renpy.display.render.render
-  File "/Applications/renpy-8.0.3-sdk/renpy/display/image.py", line 506, in render
+  File "renpy/display/image.py", line 506, in render
     return wrap_render(self.target, width, height, st, at)
-  File "/Applications/renpy-8.0.3-sdk/renpy/display/image.py", line 309, in wrap_render
+  File "renpy/display/image.py", line 309, in wrap_render
     rend = render(child, w, h, st, at)
   File "render.pyx", line 170, in renpy.display.render.render
   File "render.pyx", line 266, in renpy.display.render.render
-  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 627, in render
+  File "renpy/display/im.py", line 627, in render
     return cache.get(self, render=True)
-  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 295, in get
+  File "renpy/display/im.py", line 295, in get
     surf = image.load()
-  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 890, in load
-    child = cache.get(self.image)
-  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 295, in get
-    surf = image.load()
-  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 720, in load
+  File "renpy/display/im.py", line 720, in load
     raise e
-  File "/Applications/renpy-8.0.3-sdk/renpy/display/im.py", line 685, in load
-    filelike = renpy.loader.load(self.filename)
-  File "/Applications/renpy-8.0.3-sdk/renpy/loader.py", line 820, in load
-    raise IOError("Couldn't find file '%s'." % name)
-OSError: Couldn't find file 'images/character_sprites/tutorial_girl/tutorial_girl_fullbody.png'.
+IOError: Couldn't find file 'tutorial_girl.png'.
 
-macOS-10.16-x86_64-i386-64bit x86_64
-Ren'Py 8.0.3.22090809
+Windows-10-10.0.19041 AMD64
+Ren'Py 7.5.3.22090809
 Repairapy 1.0
-Thu Oct 27 17:11:16 2022
+Mon Oct 31 15:01:59 2022
