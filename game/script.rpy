@@ -62,7 +62,7 @@ label choices2_a:
     jump choices_common
 
 label choices_common:
-    i "Can you help me fix my dolly please?"
+    a "Can you help me fix my dolly please?"
 
 # This ends the game.
 return
