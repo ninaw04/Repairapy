@@ -33,6 +33,9 @@ label start:
 
     # ACT 1: The First Encounter
 
+label tutorial_minigame_label:
+    call screen tutorial_minigame   
+
 label choices:
     a "Hello...?"
 

@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 52: Line is followed by a block, despite not being a menu choice. Did you forget a colon at the end of the line?
-    "Yes, it is! How may I help you?"
-                                     ^
+File "game/minigames.rpy", line 23: expected a keyword argument or end of line.
+    child "Sound On with Notes 10-15-22.png")
+                                            ^
 
-Ren'Py Version: Ren'Py 7.5.3.22090809
-Mon Oct 31 15:00:32 2022
+Ren'Py Version: Ren'Py 8.0.3.22090809
+Tue Nov  1 12:58:23 2022
