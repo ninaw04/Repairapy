@@ -86,9 +86,9 @@ label choices4:
     menu:
         #slightly altered this line to be shorter
         "No worries, I can heal her in no time!":
-            jump choices4_a
+            jump choices5
         "How can a doll protect you? It's just a doll.":
-            jump choices4_b
+            jump choices4_a
 
 label choices4_a:
     a "Yeah... I guess so..."
@@ -112,8 +112,8 @@ label choices5_a:
             a2 "Well, at least I try to be."
             menu:
                 "Abigail? What a lovely name to have.":
-                    "+1 heart"
                     a2 "Thank you... it really means a lot to me."
+                    "+1 heart"
                     #comment out this return when continuing code
                     return
 
@@ -126,6 +126,7 @@ label choices5_b:
             "My dolly's name! She is a princess from a far away kingdom..."
             menu:
                 "What is your name then?":
+                    a2 "My name is Abigail Smith..."
                     #comment out this return when continuing code
                     return
 
