@@ -3,8 +3,8 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-define i = Character("Idol", color="#f96995")
-define a = Character("???", color="#a1785c")
+define a = Character("???", color="#a1785c", image="tutorial_girl")
+define i = Character("Idol", color="#f96995", image="pop_star.png")
 
 image tutorial sprite = "tutorial_girl.png"
 
@@ -37,7 +37,7 @@ label start:
     # ACT 1: The First Encounter
 
 label choices:
-    a "Hello...?"
+    a curious "Hello...?"
 
 label choices1:
     menu:
@@ -47,7 +47,7 @@ label choices1:
             jump choices1_a
 
 label choices1_a:
-    a "Is this that antique shop that fixes things?"
+    a curious "Is this that antique shop that fixes things?"
     jump choices2
 
 label choices2:
@@ -58,14 +58,14 @@ label choices2:
             jump choices2_a
 
 label choices2_a:
-    a "Oh, I'm sorry about that..."
-    a "Wait a minute- this IS the store!"
-    a "No need to lie about that... That's very mean of you."
+    a sad "Oh, I'm sorry about that..."
+    a curious "Wait a minute- this IS the store!"
+    a annoyed "No need to lie about that... That's very mean of you."
     "-1 heart"
     jump choices_common
 
 label choices_common:
-    a "Can you help me fix my dolly please?"
+    a neutral "Can you help me fix my dolly please?"
 
 # This ends the game.
 return
