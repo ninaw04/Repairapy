@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 52: Line is followed by a block, despite not being a menu choice. Did you forget a colon at the end of the line?
-    "Yes, it is! How may I help you?"
-                                     ^
+File "game/screens.rpy", line 303: 'focus_mask' is not a keyword argument or valid child for the vbox statement.
+    focus_mask True action Start() hovered [Play("sound", "audio/page_turn.wav")]
+              ^
 
-Ren'Py Version: Ren'Py 7.5.3.22090809
-Mon Oct 31 15:00:32 2022
+Ren'Py Version: Ren'Py 8.0.3.22090809
+Tue Nov  1 23:53:44 2022

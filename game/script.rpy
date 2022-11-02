@@ -1,4 +1,4 @@
-# The script of the game goes in this file.
+﻿# The script of the game goes in this file.
 
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
@@ -9,6 +9,9 @@ define a = Character("???", color="#a1785c")
 image tutorial sprite = "tutorial_girl.png"
 
 image idol sprite = im.Scale("lvl1 pop star wip.png", 563, 1000)
+
+
+# Variables we may need
 
 
 # The game starts here.
