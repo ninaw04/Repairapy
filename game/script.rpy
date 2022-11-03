@@ -47,7 +47,7 @@ label choices:
 label choices1:
     menu:
         "Hello, how may I help you?":
-            jump choices_common
+            jump choices1_a
         "Hi.":
             jump choices1_a
 
@@ -58,7 +58,7 @@ label choices1_a:
 label choices2:
     menu:
         "Yes, it is! How may I help you?":
-            jump choices_common
+            jump choices3
         "No, you got the wrong store.":
             jump choices2_a
 
@@ -68,7 +68,7 @@ label choices2_a:
     a curious "Wait a minute- this IS the store!"
     a annoyed "No need to lie about that... That's very mean of you."
     "-1 heart"
-    jump choices_common
+    jump choices3
 
 label choices_common:
     a neutral "Can you help me fix my dolly please?"
