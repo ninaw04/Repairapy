@@ -297,7 +297,9 @@ screen navigation():
 
         if main_menu:
 
-            textbutton _("Start") action Start()
+            # textbutton _("Start") action Start()
+            # 534 366
+            imagebutton auto "gui/button/%s_start_door.png" xpos -57 ypos 135 focus_mask True action Start() hovered [Play("sound", "audio/page_turn.wav")]
 
         else:
 

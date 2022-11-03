@@ -2,6 +2,7 @@
 errors listed below, and try again.
 
 
+<<<<<<< HEAD
 File "game/script.rpy", line 82: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation.
     jump choices4
     ^
@@ -16,3 +17,11 @@ File "game/script.rpy", line 125: choice menuitem expects a non-empty block.
 
 Ren'Py Version: Ren'Py 7.5.3.22090809
 Mon Oct 31 22:51:24 2022
+=======
+File "game/screens.rpy", line 303: 'focus_mask' is not a keyword argument or valid child for the vbox statement.
+    focus_mask True action Start() hovered [Play("sound", "audio/page_turn.wav")]
+              ^
+
+Ren'Py Version: Ren'Py 8.0.3.22090809
+Tue Nov  1 23:53:44 2022
+>>>>>>> 2df4ce8e8d7a3b81c8b78283c1814abc27b52051
