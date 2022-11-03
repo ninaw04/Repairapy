@@ -42,7 +42,7 @@ label choices:
 label choices1:
     menu:
         "Hello, how may I help you?":
-            jump choices3
+            jump choices1_a
         "Hi.":
             jump choices1_a
 
