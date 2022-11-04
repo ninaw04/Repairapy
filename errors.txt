@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/minigame.rpy", line 8: expected a keyword argument or end of line.
-    droppable False;
-                   ^
+File "game/script.rpy", line 7: expected statement.
+    a_yalign 1
+              ^
 
-Ren'Py Version: Ren'Py 8.0.3.22090809
-Thu Nov  3 15:49:09 2022
+Ren'Py Version: Ren'Py 7.5.3.22090809
+Thu Nov  3 18:14:05 2022

@@ -6,7 +6,7 @@
 define a = Character("???", color="#a1785c", image="tutorial_girl")
 define i = Character("Idol", color="#f96995", image="pop_star.png")
 
-image tutorial sprite = "tutorial_girl.png"
+image tutorial sprite = im.Scale("tutorial_girl_cropped.png", 650, 700)
 
 image idol sprite = im.Scale("lvl1 pop star wip.png", 563, 1000)
 
@@ -35,7 +35,9 @@ label start:
     play sound "audio/doorbell.wav"
     "*bell rings*"
 
-    show tutorial sprite
+    show tutorial sprite:
+        xalign 0.5
+        yalign 0.75
 
     # These display lines of dialogue.
 
