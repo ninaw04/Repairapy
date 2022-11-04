@@ -1,22 +1,56 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 56, in script
-    jump choices3
-ScriptError: could not find label 'choices3'.
+  File "game/script.rpy", line 78, in script
+    a ""
+  File "game/minigame.rpy", line 9, in drag_placed
+    if drags.len() == 6:
+AttributeError: 'list' object has no attribute 'len'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 56, in script
-    jump choices3
-  File "renpy/ast.py", line 1974, in execute
-    rv = renpy.game.script.lookup(target)
-  File "renpy/script.py", line 927, in lookup
-    raise ScriptError("could not find label '%s'." % str(original))
-ScriptError: could not find label 'choices3'.
+  File "game/script.rpy", line 78, in script
+    a ""
+  File "/Applications/renpy-8.0.3-sdk/renpy/ast.py", line 921, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "/Applications/renpy-8.0.3-sdk/renpy/exports.py", line 1373, in say
+    who(what, *args, **kwargs)
+  File "/Applications/renpy-8.0.3-sdk/renpy/character.py", line 1266, in __call__
+    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
+  File "/Applications/renpy-8.0.3-sdk/renpy/character.py", line 927, in do_display
+    display_say(who,
+  File "/Applications/renpy-8.0.3-sdk/renpy/character.py", line 666, in display_say
+    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
+  File "/Applications/renpy-8.0.3-sdk/renpy/ui.py", line 299, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/core.py", line 3377, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/core.py", line 4258, in interact_core
+    rv = root_widget.event(ev, x, y, 0)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/layout.py", line 1175, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/layout.py", line 1175, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/layout.py", line 1175, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/screen.py", line 743, in event
+    rv = self.child.event(ev, x, y, st)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/layout.py", line 1175, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/dragdrop.py", line 882, in event
+    return super(DragGroup, self).event(ev, x, y, st)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/layout.py", line 1175, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/dragdrop.py", line 756, in event
+    rv = run(drag.dragged, joined, drop)
+  File "/Applications/renpy-8.0.3-sdk/renpy/display/behavior.py", line 329, in run
+    return action(*args, **kwargs)
+  File "game/minigame.rpy", line 9, in drag_placed
+    if drags.len() == 6:
+AttributeError: 'list' object has no attribute 'len'
 
-Windows-10-10.0.19041 AMD64
-Ren'Py 7.5.3.22090809
+macOS-10.16-x86_64-i386-64bit x86_64
+Ren'Py 8.0.3.22090809
 Repairapy 1.0
-Wed Nov  2 21:40:31 2022
+Thu Nov  3 16:57:47 2022
