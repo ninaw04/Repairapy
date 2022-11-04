@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 7: expected statement.
-    a_yalign 1
-              ^
+File "game/script.rpy", line 41: expected 'image_name_component' not found.
+    show "bigtable.png":
+         ^
 
 Ren'Py Version: Ren'Py 7.5.3.22090809
-Thu Nov  3 18:14:05 2022
+Thu Nov  3 18:34:49 2022

@@ -10,6 +10,8 @@ image tutorial sprite = im.Scale("tutorial_girl_cropped.png", 650, 700)
 
 image idol sprite = im.Scale("lvl1 pop star wip.png", 563, 1000)
 
+image table = "bigtable.png"
+
 
 # Variables we may need
 transform hop:
@@ -38,6 +40,8 @@ label start:
     show tutorial sprite:
         xalign 0.5
         yalign 0.75
+    show table:
+        yalign 1.0
 
     # These display lines of dialogue.
 
