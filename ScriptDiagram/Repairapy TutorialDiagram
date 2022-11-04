@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-11-04T20:41:18.680Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36" etag="Ogg5Y9m1sol9jJVMeEBM" version="20.5.1" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2022-11-04T20:43:25.813Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36" etag="UJhuXcfuzt5ChLVCT3CT" version="20.5.1" type="github" pages="2">
   <diagram id="N1X_w8TkKCrEMtTvnZKn" name="Key ">
     <mxGraphModel dx="946" dy="535" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -603,8 +603,26 @@
         <mxCell id="OmDedlq4GiYkZV8WSO2p-25" value="&lt;div&gt;How did the doll get ripped?&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#000000;fontFamily=Helvetica;fontSize=12;fillColor=#d5e8d4;" vertex="1" parent="1">
           <mxGeometry x="426" y="3140" width="117" height="70" as="geometry" />
         </mxCell>
+        <mxCell id="OmDedlq4GiYkZV8WSO2p-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=12;" edge="1" parent="1" source="OmDedlq4GiYkZV8WSO2p-31" target="OmDedlq4GiYkZV8WSO2p-35">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="OmDedlq4GiYkZV8WSO2p-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=12;" edge="1" parent="1" source="OmDedlq4GiYkZV8WSO2p-31" target="OmDedlq4GiYkZV8WSO2p-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="OmDedlq4GiYkZV8WSO2p-31" value="She got hurt… really badly… she was trying to protect me" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fontFamily=Helvetica;fontSize=12;fillColor=#fff2cc;" vertex="1" parent="1">
           <mxGeometry x="333" y="3250" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="OmDedlq4GiYkZV8WSO2p-40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;" edge="1" parent="1" source="OmDedlq4GiYkZV8WSO2p-34" target="OmDedlq4GiYkZV8WSO2p-39">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="OmDedlq4GiYkZV8WSO2p-34" value="&lt;div&gt;C’mon, am I really supposed to believe that?&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#000000;fontFamily=Helvetica;fontSize=12;fillColor=#f8cecc;" vertex="1" parent="1">
+          <mxGeometry x="454.5" y="3330" width="117" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="OmDedlq4GiYkZV8WSO2p-35" value="&lt;div&gt;Protect you?&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#000000;fontFamily=Helvetica;fontSize=12;fillColor=#d5e8d4;" vertex="1" parent="1">
+          <mxGeometry x="204" y="3330" width="117" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="OmDedlq4GiYkZV8WSO2p-39" value="-1 heart" style="html=1;verticalLabelPosition=bottom;align=center;labelBackgroundColor=#ffffff;verticalAlign=top;strokeWidth=2;strokeColor=#EA6B66;shadow=0;dashed=0;shape=mxgraph.ios7.icons.heart;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="488" y="3430" width="50" height="44.32" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
