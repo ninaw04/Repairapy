@@ -58,7 +58,7 @@ label choices1_a:
 label choices2:
     menu:
         "Yes, it is! How may I help you?":
-            jump choices3
+            jump choices_common
         "No, you got the wrong store.":
             jump choices2_a
 
@@ -68,10 +68,14 @@ label choices2_a:
     a curious "Wait a minute- this IS the store!"
     a annoyed "No need to lie about that... That's very mean of you."
     "-1 heart"
-    jump choices3
+    jump choices_common
 
 label choices_common:
     a neutral "Can you help me fix my dolly please?"
+
+    scene bg tabletop
+    show screen tutorial_doll with dissolve
+    a ""
 
 # This ends the game.
 return
