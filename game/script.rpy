@@ -31,7 +31,7 @@ label start:
     scene bg interior_sketch
     
     # Testing purposes :D
-    jump tutorial_minigame
+    # jump tutorial_minigame
 
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images
