@@ -44,31 +44,34 @@ screen tutorial_doll:
         drag:
             drag_name "armL"
             child "images/doll_broken_armL.png"
-            xpos 100
-            ypos 100
+            xpos 150
+            ypos 400
             droppable False
             draggable True
             dragged drag_placed
             drag_raise True
+            focus_mask True
 
         drag:
             drag_name "armR"
             child "images/doll_broken_armR.png"
             xpos 150
-            ypos 100
+            ypos 700
             droppable False
             draggable True
             dragged drag_placed
             drag_raise True
+            focus_mask True
 
         drag:
             drag_name "head"
             child "images/doll_broken_head.png"
-            xpos 125
+            xpos 100
             ypos 50
             droppable False
             draggable True
             dragged drag_placed
+            focus_mask True
 
         drag:
             drag_name "torso"
@@ -81,20 +84,22 @@ screen tutorial_doll:
         drag:
             drag_name "legL"
             child "images/doll_broken_legL.png"
-            xpos 150
-            ypos 100
+            xpos 450
+            ypos 300
             droppable False
             draggable True
             dragged drag_placed
+            focus_mask True
 
         drag:
             drag_name "legR"
             child "images/doll_broken_legR.png"
-            xpos 150
-            ypos 100
+            xpos 450
+            ypos 575
             droppable False
             draggable True
             dragged drag_placed
+            focus_mask True
 
         drag:
             drag_name "headhb"
