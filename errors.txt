@@ -2,9 +2,10 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 83: expected ':' not found.
-    python 
-           ^
+File "game/minigame.rpy", line 4: unexpected indent
+            try:
+            ^
+    
 
 Ren'Py Version: Ren'Py 8.0.3.22090809
-Fri Nov  4 18:09:15 2022
+Fri Nov  4 19:00:14 2022

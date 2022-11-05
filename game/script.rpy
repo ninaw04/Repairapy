@@ -29,6 +29,9 @@ label start:
     # images directory to show it.
 
     scene bg interior_sketch
+    
+    # Testing purposes :D
+    jump tutorial_minigame
 
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images
@@ -80,8 +83,6 @@ label choices_common:
     a neutral "Can you help me fix my dolly please?"
 
 label tutorial_minigame:
-    python: 
-        count = 0
     call screen tutorial_doll
      
 

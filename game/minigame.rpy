@@ -1,20 +1,41 @@
 init python:
-    def drag_placed(drags, drop):
-        if not drop:
-            return
-        
-        if drags[0].drag_name == "head":
-            drags[0].snap(drop.x-15,drop.y-215)
-
+    def handle_snapping(drag):
+        drag.draggable = False
         try:
             store.count = store.count + 1
         except:
             store.count = 1
 
-        if store.count ==5:
-            return True
+    def drag_placed(drags, drop):
+        if not drop:
+            return
         
-        drags[0].draggable = False
+        if drags[0].drag_name == "head" and drop.drag_name == "headhb":
+            drags[0].snap(drop.x-55,drop.y-190)
+            handle_snapping(drags[0])
+
+        if drags[0].drag_name == "armL" and drop.drag_name == "armhb":
+            drags[0].snap(drop.x-90,drop.y-45)
+            handle_snapping(drags[0])
+
+        if drags[0].drag_name == "armR" and drop.drag_name == "armhb":
+            drags[0].snap(drop.x+135,drop.y-55)
+            handle_snapping(drags[0])
+
+        if drags[0].drag_name == "legL" and drop.drag_name == "leghb":
+            drags[0].snap(drop.x+30,drop.y+140)
+            handle_snapping(drags[0])
+
+        if drags[0].drag_name == "legR" and drop.drag_name == "leghb":
+            drags[0].snap(drop.x+110,drop.y+140)
+            handle_snapping(drags[0])
+
+        try:
+            if store.count ==5:
+                return True
+        except:
+            pass
+        
         return 
 
 screen tutorial_doll:
@@ -54,7 +75,7 @@ screen tutorial_doll:
             child "images/doll_broken_torso.png"
             xalign .50
             yalign .50
-            droppable True
+            droppable False
             draggable False
 
         drag:
@@ -74,3 +95,27 @@ screen tutorial_doll:
             droppable False
             draggable True
             dragged drag_placed
+
+        drag:
+            drag_name "headhb"
+            child "images/hitbox.png"
+            xalign .50
+            yalign .35
+            droppable True
+            draggable False
+
+        drag:
+            drag_name "armhb"
+            child "images/hitbox.png"
+            xalign .50
+            yalign .50
+            droppable True
+            draggable False
+
+        drag:
+            drag_name "leghb"
+            child "images/hitbox.png"
+            xalign .50
+            yalign .65
+            droppable True
+            draggable False
