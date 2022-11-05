@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 41: expected 'image_name_component' not found.
-    show "bigtable.png":
-         ^
+File "game/script.rpy", line 83: expected ':' not found.
+    python 
+           ^
 
-Ren'Py Version: Ren'Py 7.5.3.22090809
-Thu Nov  3 18:34:49 2022
+Ren'Py Version: Ren'Py 8.0.3.22090809
+Fri Nov  4 18:09:15 2022

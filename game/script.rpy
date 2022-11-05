@@ -79,9 +79,11 @@ label choices2_a:
 label choices_common:
     a neutral "Can you help me fix my dolly please?"
 
-    scene bg tabletop
-    show screen tutorial_doll with dissolve
-    a ""
+label tutorial_minigame:
+    python: 
+        count = 0
+    call screen tutorial_doll
+     
 
 # This ends the game.
 return

@@ -1,56 +1,58 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 78, in script
-    a ""
-  File "game/minigame.rpy", line 9, in drag_placed
-    if drags.len() == 6:
-AttributeError: 'list' object has no attribute 'len'
+  File "game/script.rpy", line 85, in script
+    call screen tutorial_doll
+  File "renpy/common/000statements.rpy", line 609, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "game/minigame.rpy", line 6, in drag_placed
+    if drag[0].drag_name == "armL":
+NameError: name 'drag' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 78, in script
-    a ""
-  File "/Applications/renpy-8.0.3-sdk/renpy/ast.py", line 921, in execute
-    renpy.exports.say(who, what, *args, **kwargs)
-  File "/Applications/renpy-8.0.3-sdk/renpy/exports.py", line 1373, in say
-    who(what, *args, **kwargs)
-  File "/Applications/renpy-8.0.3-sdk/renpy/character.py", line 1266, in __call__
-    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
-  File "/Applications/renpy-8.0.3-sdk/renpy/character.py", line 927, in do_display
-    display_say(who,
-  File "/Applications/renpy-8.0.3-sdk/renpy/character.py", line 666, in display_say
-    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
-  File "/Applications/renpy-8.0.3-sdk/renpy/ui.py", line 299, in interact
+  File "game/script.rpy", line 85, in script
+    call screen tutorial_doll
+  File "/Users/dhiraj/Desktop/renpy-8.0.3-sdk/renpy/ast.py", line 2232, in execute
+    self.call("execute")
+  File "/Users/dhiraj/Desktop/renpy-8.0.3-sdk/renpy/ast.py", line 2220, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "/Users/dhiraj/Desktop/renpy-8.0.3-sdk/renpy/statements.py", line 281, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 609, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "/Users/dhiraj/Desktop/renpy-8.0.3-sdk/renpy/exports.py", line 3181, in call_screen
+    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
+  File "/Users/dhiraj/Desktop/renpy-8.0.3-sdk/renpy/ui.py", line 299, in interact
     rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "/Applications/renpy-8.0.3-sdk/renpy/display/core.py", line 3377, in interact
+  File "/Users/dhiraj/Desktop/renpy-8.0.3-sdk/renpy/display/core.py", line 3377, in interact
     repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
-  File "/Applications/renpy-8.0.3-sdk/renpy/display/core.py", line 4258, in interact_core
+  File "/Users/dhiraj/Desktop/renpy-8.0.3-sdk/renpy/display/core.py", line 4258, in interact_core
     rv = root_widget.event(ev, x, y, 0)
-  File "/Applications/renpy-8.0.3-sdk/renpy/display/layout.py", line 1175, in event
+  File "/Users/dhiraj/Desktop/renpy-8.0.3-sdk/renpy/display/layout.py", line 1175, in event
     rv = i.event(ev, x - xo, y - yo, cst)
-  File "/Applications/renpy-8.0.3-sdk/renpy/display/layout.py", line 1175, in event
+  File "/Users/dhiraj/Desktop/renpy-8.0.3-sdk/renpy/display/layout.py", line 1175, in event
     rv = i.event(ev, x - xo, y - yo, cst)
-  File "/Applications/renpy-8.0.3-sdk/renpy/display/layout.py", line 1175, in event
+  File "/Users/dhiraj/Desktop/renpy-8.0.3-sdk/renpy/display/layout.py", line 1175, in event
     rv = i.event(ev, x - xo, y - yo, cst)
-  File "/Applications/renpy-8.0.3-sdk/renpy/display/screen.py", line 743, in event
+  File "/Users/dhiraj/Desktop/renpy-8.0.3-sdk/renpy/display/screen.py", line 743, in event
     rv = self.child.event(ev, x, y, st)
-  File "/Applications/renpy-8.0.3-sdk/renpy/display/layout.py", line 1175, in event
+  File "/Users/dhiraj/Desktop/renpy-8.0.3-sdk/renpy/display/layout.py", line 1175, in event
     rv = i.event(ev, x - xo, y - yo, cst)
-  File "/Applications/renpy-8.0.3-sdk/renpy/display/dragdrop.py", line 882, in event
+  File "/Users/dhiraj/Desktop/renpy-8.0.3-sdk/renpy/display/dragdrop.py", line 882, in event
     return super(DragGroup, self).event(ev, x, y, st)
-  File "/Applications/renpy-8.0.3-sdk/renpy/display/layout.py", line 1175, in event
+  File "/Users/dhiraj/Desktop/renpy-8.0.3-sdk/renpy/display/layout.py", line 1175, in event
     rv = i.event(ev, x - xo, y - yo, cst)
-  File "/Applications/renpy-8.0.3-sdk/renpy/display/dragdrop.py", line 756, in event
+  File "/Users/dhiraj/Desktop/renpy-8.0.3-sdk/renpy/display/dragdrop.py", line 756, in event
     rv = run(drag.dragged, joined, drop)
-  File "/Applications/renpy-8.0.3-sdk/renpy/display/behavior.py", line 329, in run
+  File "/Users/dhiraj/Desktop/renpy-8.0.3-sdk/renpy/display/behavior.py", line 329, in run
     return action(*args, **kwargs)
-  File "game/minigame.rpy", line 9, in drag_placed
-    if drags.len() == 6:
-AttributeError: 'list' object has no attribute 'len'
+  File "game/minigame.rpy", line 6, in drag_placed
+    if drag[0].drag_name == "armL":
+NameError: name 'drag' is not defined
 
 macOS-10.16-x86_64-i386-64bit x86_64
 Ren'Py 8.0.3.22090809
 Repairapy 1.0
-Thu Nov  3 16:57:47 2022
+Fri Nov  4 18:20:12 2022

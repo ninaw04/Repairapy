@@ -2,15 +2,23 @@ init python:
     def drag_placed(drags, drop):
         if not drop:
             return
+        
+        if drags[0].drag_name == "head":
+            drags[0].snap(drop.x-15,drop.y-215)
 
-        store.draggable = drags[0].drag_name
-        store.droppable = drop.drag_name
+        try:
+            store.count = store.count + 1
+        except:
+            store.count = 1
 
-        # if len(drags) == 2:
-        #     return True
-        return True
+        if store.count ==5:
+            return True
+        
+        drags[0].draggable = False
+        return 
 
 screen tutorial_doll:
+    add 'bg tabletop.png'
     draggroup:
         drag:
             drag_name "armL"
