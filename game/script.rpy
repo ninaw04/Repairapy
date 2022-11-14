@@ -249,6 +249,10 @@ label act2:
 
 
 label tutorial_minigame:
+    show tutorial sprite:
+        xalign 0.85
+        yalign 1.0
+    # minigame_window show
     call screen tutorial_doll
 
 # This ends the game.

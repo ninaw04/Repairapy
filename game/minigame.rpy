@@ -76,7 +76,7 @@ screen tutorial_doll:
         drag:
             drag_name "torso"
             child "images/doll_broken_torso.png"
-            xalign .50
+            xalign .35
             yalign .50
             droppable False
             draggable False
@@ -104,7 +104,7 @@ screen tutorial_doll:
         drag:
             drag_name "headhb"
             child "images/hitbox.png"
-            xalign .50
+            xalign .35
             yalign .35
             droppable True
             draggable False
@@ -112,7 +112,7 @@ screen tutorial_doll:
         drag:
             drag_name "armhb"
             child "images/hitbox.png"
-            xalign .50
+            xalign .35
             yalign .50
             droppable True
             draggable False
@@ -120,7 +120,7 @@ screen tutorial_doll:
         drag:
             drag_name "leghb"
             child "images/hitbox.png"
-            xalign .50
+            xalign .35
             yalign .65
             droppable True
             draggable False

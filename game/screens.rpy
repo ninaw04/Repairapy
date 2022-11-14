@@ -138,6 +138,13 @@ style window:
 
     background Image("gui/textbox.png", xalign=0.5, yalign=1.0)
 
+style minigame_window:
+    xalign 0.85
+    yalign 0.20
+    ysize gui.textbox_height
+
+    background Image("gui/minigame_textbox.png", xalign=0.85, yalign = 0.20)
+
 style namebox:
     xpos gui.name_xpos
     xanchor gui.name_xalign
