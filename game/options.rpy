@@ -108,6 +108,8 @@ define config.end_game_transition = None
 
 define config.window = "auto"
 
+define config.
+
 
 ## Transitions used to show and hide the dialogue window
 
