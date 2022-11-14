@@ -3,7 +3,7 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-define a = Character("???", color="#a1785c", image="tutorial_girl")
+define a = Character('[Abigail]', color="#a1785c", image="tutorial_girl")
 define i = Character("Idol", color="#f96995", image="pop_star.png")
 
 image tutorial sprite = im.Scale("tutorial_girl neutral.png", 440, 709)
@@ -25,7 +25,10 @@ transform hop:
 
 label act1:
     label start:
+
         $ hearts = 0
+        $ Abigail = "???"
+
         play music "music/Night-in-Venice.mp3"
 
         # Show a background. This uses a placeholder by default, but you can
@@ -115,6 +118,7 @@ label act1:
                 a neutral "Her name is Princess Coraline! The one and only!"
                 menu:
                     "And who may court by her side?":
+                        $ Abigail = "Abigail Smith"
                         a happy "It is me of course! Abigail Smith, the strongest knight there is!"
                         a neutral "Well, at least I try to be."
                         menu:
@@ -135,6 +139,7 @@ label act1:
                         a neutral "My dolly's name! She is a princess from a far away kingdom."
                         menu:
                             "What is your name then?":
+                                $ Abigail = "Abigail Smith"
                                 a neutral "My name is Abigail..."
                                 jump cutscene1
 
