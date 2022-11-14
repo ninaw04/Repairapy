@@ -107,9 +107,7 @@ define config.end_game_transition = None
 ## "window hide", and "window auto" statements.
 
 define config.window = "auto"
-
-define config.
-
+# define config.minigame_window = "hide"
 
 ## Transitions used to show and hide the dialogue window
 

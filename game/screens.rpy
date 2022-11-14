@@ -101,14 +101,25 @@ screen say(who, what):
     window:
         id "window"
 
+        if is_currently_minigame == True:
+            xalign 0.85
+            yalign 0.20
+            ysize gui.textbox_height
+
+            background Image("gui/minigame_textbox.png", xalign=0.85, yalign = 0.20)
+        
         if who is not None:
 
             window:
+                if is_currently_minigame == True:
+                    xalign 0.7
                 id "namebox"
                 style "namebox"
                 text who id "who"
-
-        text what id "what"
+        if is_currently_minigame == True:
+            text what id "what" xalign 0.7
+        else:
+            text what id "what"
 
 
     ## If there's a side image, display it above the text. Do not display on the

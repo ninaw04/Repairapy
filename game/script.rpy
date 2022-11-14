@@ -16,6 +16,8 @@ image broken doll = im.Scale("doll_broken_full.png", 200, 400)
 
 
 # Variables we may need
+define is_currently_minigame = False
+
 transform hop:
     linear 0.5 yoffset -150
     linear 0.5 yoffset 0
@@ -105,10 +107,12 @@ label act1:
         a sad "The kids at my school- I mean, my dolly was hurt really bad protecting me. She REALLY needs help."
         menu:
             "It appears that she has been injured really badly... no worries though, she will be healed in no time.":
-                jump choices4
+                # jump choices4
+                jump tutorial_minigame
             "How can a doll protect you? It's just a doll.":
                 a sad "Yeah... I guess so, but Dolly has always been there for me..."
-                jump choices4
+                # jump choices4
+                jump tutorial_minigame
 
     label choices4:
         a neutral "I want to thank you for taking time with Dolly. I don't know what I'd do without her."
@@ -228,11 +232,17 @@ label act2:
 
 
 label tutorial_minigame:
+    $ is_currently_minigame = True
     show tutorial sprite:
         xalign 0.85
         yalign 1.0
     # minigame_window show
+    # init python:
+    #     config.minigame_window = "show"
     call screen tutorial_doll
+    # define config.minigame_window = "hide"
+    $ is_currently_minigame = False
+    jump choices4
 
 # This ends the game.
 return
