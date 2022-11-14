@@ -38,7 +38,7 @@ define gui.about = _p("""When therapy is too expensive and you can't sell your s
 ## or semicolons.
 
 define build.name = "Repairapy"
-
+define build.itch_project = "ninaw/Repairapy"
 
 ## Sounds and music ############################################################
 

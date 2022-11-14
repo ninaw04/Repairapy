@@ -285,52 +285,8 @@ style quick_button_text:
 ## This screen is included in the main and game menus, and provides navigation
 ## to other menus, and to start the game.
 
-screen navigation():
+# screen navigation():
 
-    vbox:
-        style_prefix "navigation"
-
-        xpos gui.navigation_xpos
-        yalign 0.5
-
-        spacing gui.navigation_spacing
-
-        if main_menu:
-
-            # textbutton _("Start") action Start()
-            # 534 366
-            imagebutton auto "gui/button/%s_start_door.png" xpos -57 ypos 135 focus_mask True action Start() hovered [Play("sound", "audio/page_turn.wav")]
-
-        else:
-
-            textbutton _("History") action ShowMenu("history")
-
-            textbutton _("Save") action ShowMenu("save")
-
-        textbutton _("Load") action ShowMenu("load")
-
-        textbutton _("Preferences") action ShowMenu("preferences")
-
-        if _in_replay:
-
-            textbutton _("End Replay") action EndReplay(confirm=True)
-
-        elif not main_menu:
-
-            textbutton _("Main Menu") action MainMenu()
-
-        textbutton _("About") action ShowMenu("about")
-
-        if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
-
-            ## Help isn't necessary or relevant to mobile devices.
-            textbutton _("Help") action ShowMenu("help")
-
-        if renpy.variant("pc"):
-
-            ## The quit button is banned on iOS and unnecessary on Android and
-            ## Web.
-            textbutton _("Quit") action Quit(confirm=not main_menu)
 
 
 style navigation_button is gui_button
@@ -358,12 +314,60 @@ screen main_menu():
     add gui.main_menu_background
 
     ## This empty frame darkens the main menu.
-    frame:
-        style "main_menu_frame"
+    # frame:
+    #     style "main_menu_frame"
 
     ## The use statement includes another screen inside this one. The actual
     ## contents of the main menu are in the navigation screen.
-    use navigation
+    # use navigation
+    fixed:
+        style_prefix "navigation"
+
+        xpos gui.navigation_xpos
+        yalign 0.5
+
+        spacing gui.navigation_spacing
+
+        if main_menu:
+
+            # textbutton _("Start") action Start()
+            # 534 366
+            imagebutton auto "gui/button/%s_start_door.png" xpos -57 ypos 0 focus_mask True action Start() hovered [Play("sound", "audio/page_turn.wav")]
+
+        else:
+
+            textbutton _("History") action ShowMenu("history")
+
+            textbutton _("Save") action ShowMenu("save")
+
+        # textbutton _("Load") action ShowMenu("load")
+        imagebutton auto "gui/button/menu_load_%s.png" action ShowMenu("load") xpos 210 ypos 935
+
+        # textbutton _("Preferences") action ShowMenu("preferences")
+        imagebutton auto "gui/button/menu_preferences_%s.png" action ShowMenu("preferences") xpos 470 ypos 930
+
+        if _in_replay:
+
+            textbutton _("End Replay") action EndReplay(confirm=True)
+
+        elif not main_menu:
+
+            textbutton _("Main Menu") action MainMenu()
+
+        # textbutton _("About") action ShowMenu("about")
+        imagebutton auto "gui/button/menu_about_%s.png" action ShowMenu("about") xpos 900 ypos 930
+
+        if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
+
+            ## Help isn't necessary or relevant to mobile devices.
+            textbutton _("Help") action ShowMenu("help")
+
+        if renpy.variant("pc"):
+
+            ## The quit button is banned on iOS and unnecessary on Android and
+            ## Web.
+            # textbutton _("Quit") action Quit(confirm=not main_menu)
+            imagebutton auto "gui/button/menu_quit_%s.png" action Quit(confirm=not main_menu) xpos 1500 ypos 935
 
     if gui.show_name:
 
@@ -393,7 +397,7 @@ style main_menu_vbox:
     xalign 1.0
     xoffset -30
     xmaximum 1200
-    yalign 1.0
+    yalign 0.05
     yoffset -30
 
 style main_menu_text:
@@ -469,7 +473,7 @@ screen game_menu(title, scroll=None, yinitial=0.0):
 
                     transclude
 
-    use navigation
+    # use navigation
 
     textbutton _("Return"):
         style "return_button"
