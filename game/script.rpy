@@ -4,14 +4,29 @@
 # name of the character.
 
 define a = Character('[Abigail]', color="#a1785c", image="tutorial_girl")
+
+#resizing images
+image tutorial_girl neutral = im.Scale("tutorial_girl neutral.png", 440, 709)
+image tutorial_girl happy = im.Scale("tutorial_girl happy.png", 440, 709)
+image tutorial_girl happy_eyesclosed = im.Scale("tutorial_girl happy_eyesclosed.png", 440, 709)
+image tutorial_girl sad = im.Scale("tutorial_girl sad.png", 440, 709)
+image tutorial_girl curious = im.Scale("tutorial_girl curious.png", 440, 709)
+image tutorial_girl horrified = im.Scale("tutorial_girl horrified.png", 440, 709)
+image tutorial_girl annoyed = im.Scale("tutorial_girl annoyed.png", 440, 709)
+
+image a neutral = im.Scale("side tutorial_girl neutral.png", 350, 350)
+image a happy = im.Scale("side tutorial_girl happy.png", 350, 350)
+image a sad = im.Scale("side tutorial_girl sad.png", 350, 350)
+image a curious = im.Scale("side tutorial_girl curious.png", 350, 350)
+image a horrified = im.Scale("side tutorial_girl horrified.png", 350, 350)
+image a annoyed = im.Scale("side tutorial_girl annoyed.png", 350, 350)
+
+
 define i = Character("Idol", color="#f96995", image="pop_star.png")
-
-image tutorial sprite = im.Scale("tutorial_girl neutral.png", 440, 709)
-
 image idol sprite = im.Scale("lvl1 pop star wip.png", 563, 1000)
 
-image table = "bigtable.png"
 
+image table = "bigtable.png"
 image broken doll = im.Scale("doll_broken_full.png", 200, 400)
 
 
@@ -23,40 +38,38 @@ transform hop:
 
 # The game starts here.
 
+label start:
+
+    $ hearts = 0
+    $ Abigail = "???"
+
+    play music "music/Night-in-Venice.mp3"
+
+    # Show a background. This uses a placeholder by default, but you can
+    # add a file (named either "bg room.png" or "bg room.jpg") to the
+    # images directory to show it.
+
+    scene bg interior_sketch
+
+    # Testing purposes :D
+    # jump tutorial_minigame
+
+    # This shows a character sprite. A placeholder is used, but you can
+    # replace it by adding a file named "eileen happy.png" to the images
+    # directory.
+
+    play sound "audio/doorbell.wav"
+    "*bell rings*"
+
+    show tutorial_girl:
+        xalign 0.5
+        yalign 0.75
+    show table:
+        yalign 1.0
+
+# ACT 1: The First Encounter  
 label act1:
-    label start:
-
-        $ hearts = 0
-        $ Abigail = "???"
-
-        play music "music/Night-in-Venice.mp3"
-
-        # Show a background. This uses a placeholder by default, but you can
-        # add a file (named either "bg room.png" or "bg room.jpg") to the
-        # images directory to show it.
-
-        scene bg interior_sketch
-
-        # Testing purposes :D
-        # jump tutorial_minigame
-
-        # This shows a character sprite. A placeholder is used, but you can
-        # replace it by adding a file named "eileen happy.png" to the images
-        # directory.
-
-        play sound "audio/doorbell.wav"
-        "*bell rings*"
-
-        show tutorial sprite:
-            xalign 0.5
-            yalign 0.75
-        show table:
-            yalign 1.0
-
-        # These display lines of dialogue.
-
-        # ACT 1: The First Encounter
-
+    # These display lines of dialogue.
 
     label choices1:
         a curious "Hello...?"
@@ -76,9 +89,10 @@ label act1:
 
     label choices2_a:
         a sad "Oh, I'm sorry about that..."
-        show tutorial sprite at hop
-        a curious "Wait a minute- this IS the store!"
+        show tutorial_girl horrified at hop
+        a horrified "Wait a minute- this IS the store!"
         a annoyed "No need to lie about that... That's very mean of you."
+        show tutorial_girl sad
         "-1 heart"
         $ hearts -= 1
         jump choices2_common
@@ -124,12 +138,14 @@ label act1:
                         menu:
                             "Abigail? What a lovely name.":
                                 a curious "Thank you... it really means a lot to me."
+                                show tutorial_girl happy_eyesclosed
                                 "+1 heart"
                                 $ hearts += 1
                                 jump cutscene1
             "Where are your parents? ...Can't they fix it for you?":
                 a annoyed "Well, they don't know I'm here."
                 a sad "...Though I doubt they'd care."
+                show tutorial_girl sad
                 "-1 heart"
                 $ hearts -= 1
                 a sad "..."
@@ -154,6 +170,7 @@ label act1:
                 a neutral "I've had Princess Caroline since 4th grade. Out of all my toys, Princess Caroline is my favorite."
                 menu:
                     "You must love her a lot.":
+                        show tutorial_girl happy_eyesclosed
                         "+1 heart"
                         $ hearts += 1
                         a happy "I do love her!"
@@ -161,6 +178,7 @@ label act1:
                         a neutral "It's okay though, I don't need any other toys. Just her."
                         jump choices6
                     "You sure are spoiled, huh?":
+                        show tutorial_girl sad
                         "-1 heart"
                         $ hearts -= 1
                         a horrified "That's what I always hear from others too... It's not like that at all!"
@@ -179,6 +197,7 @@ label act1:
         a sad "She got hurt... really badly... she was trying to protect me."
         menu:
             "C'mon, am I really supposed to believe that?":
+                show tutorial_girl sad
                 "-1 heart"
                 $ hearts -= 1
                 a annoyed "It's true! There were monsters out to get me, but Princess Caroline stopped the enemies before they could hurt me."
@@ -202,11 +221,13 @@ label act1:
         a sad "I lost my only friend."
         menu:
             "You can try moving on...":
+                show tutorial_girl sad
                 "-1 heart"
                 $ hearts -= 1
                 a horrified "How can you say that? It's not that easy, you know?"
                 jump checkpoint1
             "Let's try fixing her before saying anything else.":
+                show tutorial_girl happy_eyesclosed
                 "+1 heart"
                 $ hearts += 1
                 a neutral "You're right... Someone told me before that a strong heart can heal anything!"
