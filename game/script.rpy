@@ -40,7 +40,7 @@ label act1:
         scene bg interior_sketch
 
         # Testing purposes :D
-        # jump tutorial_minigame
+        jump tutorial_minigame
 
         # This shows a character sprite. A placeholder is used, but you can
         # replace it by adding a file named "eileen happy.png" to the images
@@ -236,6 +236,8 @@ label tutorial_minigame:
     show tutorial sprite:
         xalign 0.85
         yalign 1.0
+
+    a "testing"
     # minigame_window show
     # init python:
     #     config.minigame_window = "show"

@@ -1,4 +1,6 @@
 init python:
+    store.count = 0;
+
     def handle_snapping(drag):
         drag.draggable = False
         try:
