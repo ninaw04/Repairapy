@@ -5,6 +5,7 @@
 
 define a = Character('[Abigail]', color="#a1785c", image="tutorial_girl")
 define i = Character("Idol", color="#f96995", image="pop_star.png")
+default tool = "no tool"
 
 image tutorial sprite = im.Scale("tutorial_girl neutral.png", 440, 709)
 
@@ -37,10 +38,10 @@ label act1:
         # add a file (named either "bg room.png" or "bg room.jpg") to the
         # images directory to show it.
 
-        scene bg interior_sketch
+        scene bg interior
 
         # Testing purposes :D
-        jump tutorial_minigame
+        # jump tutorial_minigame_assembly
 
         # This shows a character sprite. A placeholder is used, but you can
         # replace it by adding a file named "eileen happy.png" to the images
@@ -108,11 +109,11 @@ label act1:
         menu:
             "It appears that she has been injured really badly... no worries though, she will be healed in no time.":
                 # jump choices4
-                jump tutorial_minigame
+                jump tutorial_minigame_assembly
             "How can a doll protect you? It's just a doll.":
                 a sad "Yeah... I guess so, but Dolly has always been there for me..."
                 # jump choices4
-                jump tutorial_minigame
+                jump tutorial_minigame_assembly
 
     label choices4:
         a neutral "I want to thank you for taking time with Dolly. I don't know what I'd do without her."
@@ -231,20 +232,20 @@ label act2:
     #act2 starts here
 
 
-label tutorial_minigame:
+label tutorial_minigame_assembly:
     $ is_currently_minigame = True
     show tutorial sprite:
         xalign 0.85
         yalign 1.0
 
     a "testing"
-    # minigame_window show
-    # init python:
-    #     config.minigame_window = "show"
+    $ tool = ""
     call screen tutorial_doll
-    # define config.minigame_window = "hide"
     $ is_currently_minigame = False
     jump choices4
+    # jump choices8
+
+label tutorial_minigame_coloring:
 
 # This ends the game.
 return

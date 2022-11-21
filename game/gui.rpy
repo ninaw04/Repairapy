@@ -266,7 +266,7 @@ define gui.pref_spacing = 15
 ## Controls the amount of spacing between preference buttons.
 define gui.pref_button_spacing = 0
 
-## The spacing between file page buttons.
+## The spacing between file page s.
 define gui.page_spacing = 0
 
 ## The spacing between file slots.
