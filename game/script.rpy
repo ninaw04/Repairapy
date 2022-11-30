@@ -247,19 +247,19 @@ label checkpoint1:
 label act2:
     #act2 starts here
     "She comes from a faraway kingdom… a kingdom you don’t know about (it’s a seret)!!"
-    a sad "Well… the princess was always lonely in her tower… the king would work all night while the queen was away playing."
+        a sad "Well… the princess was always lonely in her tower… the king would work all night while the queen was away playing."
     show tutorial_girl sad
-    a sad"The villagers in her kingdom are scared of her because of a curse"
-     menu:
+        a sad"The villagers in her kingdom are scared of her because of a curse"
+        menu:
             "A curse?":
 
-   a sad "YES! A curse placed on her by the queen herself. Poor Princess Caroline… all alone with no one to love. Not even the King can save her.." 
-    menu:
+        a sad "YES! A curse placed on her by the queen herself. Poor Princess Caroline… all alone with no one to love. Not even the King can save her.." 
+        menu:
             "A curse?"
             "Is there a reason why?"
 
 label act2Sel9: 
-      menu:
+    menu:
             "What about the monsters from earlier?"
             "You have quite the imagination":
                 jump selction9a
@@ -286,7 +286,7 @@ label selection9:
             "Villains?"
         
         a neutral "They’re horrible… even worse than the monsters. They know about the monsters… they know of the queen’s curse… every day the Princess is hurting and every day they [adults] are watching."
-         menu:
+        menu:
             "You probably deserve it":
                 jump selction10a
             "That’s not nice of them to behave this way"
