@@ -4,11 +4,9 @@
 # name of the character.
 
 define a = Character('[Abigail]', color="#a1785c", image="tutorial_girl")
-minigame-textbox
 define i = Character("Idol", color="#f96995", image="pop_star.png")
 default tool = "no tool"
 
-main
 
 #resizing images
 image tutorial_girl neutral = im.Scale("tutorial_girl neutral.png", 440, 709)
@@ -50,18 +48,17 @@ label start:
     $ hearts = 0
     $ Abigail = "???"
 
-minigame-textbox
-        scene bg interior
 
-        # Testing purposes :D
-        # jump tutorial_minigame_assembly
+    scene bg interior
+
+    # Testing purposes :D
+    # jump tutorial_minigame_assembly
 
     play music "music/Night-in-Venice.mp3"
 
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
-main
 
     scene bg interior_sketch
 
@@ -263,11 +260,11 @@ label checkpoint1:
 label act2:
     #act2 starts here
     "She comes from a faraway kingdom… a kingdom you don’t know about (it’s a seret)!!"
-        a sad "Well… the princess was always lonely in her tower… the king would work all night while the queen was away playing."
+    a sad "Well… the princess was always lonely in her tower… the king would work all night while the queen was away playing."
     show tutorial_girl sad
-        a sad"The villagers in her kingdom are scared of her because of a curse"
-        menu:
-            "A curse?":
+    a sad"The villagers in her kingdom are scared of her because of a curse"
+    menu:
+        "A curse?"
 
         a sad "YES! A curse placed on her by the queen herself. Poor Princess Caroline… all alone with no one to love. Not even the King can save her.." 
         menu:
@@ -329,7 +326,115 @@ label selection10b:
                     $ hearts -= 1
 
 
+label badEndingRoute:
+    if hearts < 2:
+        a neutral "...."
+        a neutral "something… I… did?"
+        a neutral "oh..."
+            menu:
+                "I mean… yeah… haven’t you always questioned it?":
+                    jump badChoice1A
+                "People don’t bully for no reason":
+                    jump badChoice1B
 
+label badChoice1A:
+    a sad "Well… part of me was hoping… I was wrong"
+    a sad "Sorry… haha… it was a silly thought"
+    a sad "..."
+    a sad " I just wanted to be saved…"
+        menu:
+            "Be honest, you’re the reason why the doll is broken? ":
+                jump badChoice2A
+            "Yeah, it’s really pathetic looking for help from a stranger of all people":
+                jump badChoice2B
+
+label badChoice1B:
+    a sad "They… don’t…"
+    a sad "..."
+    a sad "I’m sorry…. I’m really sorry…."
+    a sad "I…you’re right.. There’s a reason for everything"
+    a sad " All I wanted was to be saved…"
+        menu:
+            "You’re pathetic aren’t you? Looking for help from a worker. I don’t know you":
+                jump badChoice2B
+            "There’s a reason why the doll is broken, it’s your fault":
+                jump badChoice2A
+
+label badChoice2A:
+    a sad " … No…! You’re wrong… she’s not hurt because of me "
+    a sad "She wouldn’t blame me..! She understands why I can’t save her this time… right?"
+    a sad "…. Princess Caroline? You understand, right?"
+    doll "..."
+    a sad " I’m sorry! I’m sorry, okay? What more do you want from me?"
+    a sad " … Princess Caroline?"
+        menu:
+            "Who got you the doll again, Abigail?"
+            "Tell me again, so your doll was bought by your parents?"
+
+label badChoice2B:
+    a sad " … pathetic?"
+    a sad " I’m… pathetic?"
+    a sad "… Princess Caroline doesn’t think I am. Right, Princess Caroline?"
+    doll "..."
+    a sad " You… too? Not you too Princess Caroline…"
+    a sad "I’m sorry… I’m so sorry… What do I do now? What do you want from me?"
+    a sad " … Princess Caroline?"
+        menu:
+            "Tell me again, so your doll was bought by your parents?":
+                jump badChoice3C
+            "Who got you the doll again, Abigail?":
+                jump badChoice3C
+
+    
+label badChoice3C:
+    a sad "…. My parents did buy me her.."
+    a sad "…. But… I don’t know why that’s important…"
+        menu:
+            "You don’t see it at all?":
+                jump badChoice3A
+            "Are you that dumb?":
+                jump badChoice3B
+
+label badChoice3A:
+    a sad "….."
+    a sad "Oh… you’re right…"
+    a sad "I…I’m sorry"
+    a sad "I guess they did buy me… princess..caroline":
+    a sad " I am ungrateful "
+        menu:
+            "The bullies too, they have a reason":
+                jump badChoice4C
+
+label badChoice3C:
+    a sad"Why… Do you keep saying that??"
+    a sad "..." 
+    a sad "Oh..! I see "
+    a sad "I understand what you mean now…"
+    a sad "Everything that had happened… every pain I felt" 
+    a sad "It all happened for a reason"
+    a neutral "Thank you… fixer… I finally understand"
+    a neutral "*she pays and leaves*"
+    "few days later"
+    "*bell chimes*"
+
+    random "Have you seen our daughter?"
+    menu:
+        "Who?"
+        "May I help you?"
+
+    other random "Abigail?? Abigail Smith?? She was last seen leaving this shop"
+    parents "We’re her parents.. Our daughter never came home that day"
+    parents "Please… we need to find our precious daughter"
+    Mother "She’s been missing for days and the police are utterly useless"
+    Father "Do you know why she was here?"
+    menu:
+        "She came to fix her doll"
+        "I just did my job"
+    Father "Please… if you see her.. Call us"
+
+    Mother "Oh please.. Let her be safe "
+
+    Father "Sorry for interrupting you and your works… we won’t bother you anymore"
 
 
 
