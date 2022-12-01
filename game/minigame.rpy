@@ -1,4 +1,5 @@
 init python:
+
     def handle_snapping(drag):
         drag.draggable = False
         try:
@@ -7,7 +8,10 @@ init python:
             store.count = 1
 
     def drag_placed(drags, drop):
-        if not drop:
+        #check if the correct tool
+        print("tool: ", store.tool)
+
+        if not drop or store.tool != "needle":
             return
         
         if drags[0].drag_name == "head" and drop.drag_name == "headhb":
@@ -31,15 +35,17 @@ init python:
             handle_snapping(drags[0])
 
         try:
-            if store.count ==5:
+            if store.count%5 ==0:
                 return True
         except:
             pass
-        
         return 
 
 screen tutorial_doll:
     add 'bg tabletop.png'
+
+    use toolbar
+
     draggroup:
         drag:
             drag_name "armL"

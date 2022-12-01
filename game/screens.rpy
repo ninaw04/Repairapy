@@ -101,14 +101,25 @@ screen say(who, what):
     window:
         id "window"
 
+        if is_currently_minigame == True:
+            xalign 0.85
+            yalign 0.20
+            ysize gui.textbox_height
+
+            background Image("gui/minigame_textbox.png", xalign=0.85, yalign = 0.20)
+        
         if who is not None:
 
             window:
+                if is_currently_minigame == True:
+                    xalign 0.7
                 id "namebox"
                 style "namebox"
                 text who id "who"
-
-        text what id "what"
+        if is_currently_minigame == True:
+            text what id "what" xalign 0.7
+        else:
+            text what id "what"
 
 
     ## If there's a side image, display it above the text. Do not display on the
@@ -363,6 +374,11 @@ screen main_menu():
 
         # textbutton _("About") action ShowMenu("about")
         imagebutton auto "gui/button/menu_about_%s.png" action ShowMenu("about") xpos 900 ypos 930
+
+        # for Credits
+        #textbutton _("Credits") action ShowMenu("credits")
+        imagebutton auto "gui/button/menu_credits_%s.png" action ShowMenu("credits") xpos 1200 ypos 940
+
 
         if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
 
@@ -872,6 +888,38 @@ style slider_button_text:
 style slider_vbox:
     xsize 675
 
+## Credits screen ##############################################################
+##
+## This is a screen that displays the credits of the game.
+## Nothing is written in it now, copies from About page.
+##
+screen credits():
+    tag menu
+
+    ## This use statement includes the game_menu screen inside this one. The
+    ## vbox child is then included inside the viewport inside the game_menu
+    ## screen.
+    use game_menu(_("About"), scroll="viewport"):
+
+        style_prefix "about"
+
+        vbox:
+
+            label "[config.name!t]"
+            text _("Version [config.version!t]\n")
+
+            ## gui.about is usually set in options.rpy.
+            if gui.about:
+                text "[gui.about!t]\n"
+
+            text _("Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]")
+
+style backstory_label is gui_label
+style backstory_label_text is gui_label_text
+style backstory_text is gui_text
+
+style backstory_label_text:
+    size gui.label_text_size
 
 ## History screen ##############################################################
 ##

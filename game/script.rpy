@@ -4,6 +4,11 @@
 # name of the character.
 
 define a = Character('[Abigail]', color="#a1785c", image="tutorial_girl")
+minigame-textbox
+define i = Character("Idol", color="#f96995", image="pop_star.png")
+default tool = "no tool"
+
+main
 
 #resizing images
 image tutorial_girl neutral = im.Scale("tutorial_girl neutral.png", 440, 709)
@@ -31,6 +36,8 @@ image broken doll = im.Scale("doll_broken_full.png", 200, 400)
 
 
 # Variables we may need
+define is_currently_minigame = False
+
 transform hop:
     linear 0.5 yoffset -150
     linear 0.5 yoffset 0
@@ -43,11 +50,18 @@ label start:
     $ hearts = 0
     $ Abigail = "???"
 
+minigame-textbox
+        scene bg interior
+
+        # Testing purposes :D
+        # jump tutorial_minigame_assembly
+
     play music "music/Night-in-Venice.mp3"
 
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
+main
 
     scene bg interior_sketch
 
@@ -119,10 +133,12 @@ label act1:
         a sad "The kids at my school- I mean, my dolly was hurt really bad protecting me. She REALLY needs help."
         menu:
             "It appears that she has been injured really badly... no worries though, she will be healed in no time.":
-                jump choices4
+                # jump choices4
+                jump tutorial_minigame_assembly
             "How can a doll protect you? It's just a doll.":
                 a sad "Yeah... I guess so, but Dolly has always been there for me..."
-                jump choices4
+                # jump choices4
+                jump tutorial_minigame_assembly
 
     label choices4:
         a neutral "I want to thank you for taking time with Dolly. I don't know what I'd do without her."
@@ -320,12 +336,20 @@ label selection10b:
 
 
 
-label tutorial_minigame:
+label tutorial_minigame_assembly:
+    $ is_currently_minigame = True
     show tutorial sprite:
         xalign 0.85
         yalign 1.0
-    # minigame_window show
+
+    a "testing"
+    $ tool = ""
     call screen tutorial_doll
+    $ is_currently_minigame = False
+    jump choices4
+    # jump choices8
+
+label tutorial_minigame_coloring:
 
 # This ends the game.
 return
