@@ -4,15 +4,34 @@
 # name of the character.
 
 define a = Character('[Abigail]', color="#a1785c", image="tutorial_girl")
+minigame-textbox
 define i = Character("Idol", color="#f96995", image="pop_star.png")
 default tool = "no tool"
 
-image tutorial sprite = im.Scale("tutorial_girl neutral.png", 440, 709)
+main
 
+#resizing images
+image tutorial_girl neutral = im.Scale("tutorial_girl neutral.png", 440, 709)
+image tutorial_girl happy = im.Scale("tutorial_girl happy.png", 440, 709)
+image tutorial_girl happy_eyesclosed = im.Scale("tutorial_girl happy_eyesclosed.png", 440, 709)
+image tutorial_girl sad = im.Scale("tutorial_girl sad.png", 440, 709)
+image tutorial_girl curious = im.Scale("tutorial_girl curious.png", 440, 709)
+image tutorial_girl horrified = im.Scale("tutorial_girl horrified.png", 440, 709)
+image tutorial_girl annoyed = im.Scale("tutorial_girl annoyed.png", 440, 709)
+
+image a neutral = im.Scale("side tutorial_girl neutral.png", 350, 350)
+image a happy = im.Scale("side tutorial_girl happy.png", 350, 350)
+image a sad = im.Scale("side tutorial_girl sad.png", 350, 350)
+image a curious = im.Scale("side tutorial_girl curious.png", 350, 350)
+image a horrified = im.Scale("side tutorial_girl horrified.png", 350, 350)
+image a annoyed = im.Scale("side tutorial_girl annoyed.png", 350, 350)
+
+
+define i = Character("Idol", color="#f96995", image="pop_star.png")
 image idol sprite = im.Scale("lvl1 pop star wip.png", 563, 1000)
 
-image table = "bigtable.png"
 
+image table = "bigtable.png"
 image broken doll = im.Scale("doll_broken_full.png", 200, 400)
 
 
@@ -26,40 +45,45 @@ transform hop:
 
 # The game starts here.
 
-label act1:
-    label start:
+label start:
 
-        $ hearts = 0
-        $ Abigail = "???"
+    $ hearts = 0
+    $ Abigail = "???"
 
-        play music "music/Night-in-Venice.mp3"
-
-        # Show a background. This uses a placeholder by default, but you can
-        # add a file (named either "bg room.png" or "bg room.jpg") to the
-        # images directory to show it.
-
+minigame-textbox
         scene bg interior
 
         # Testing purposes :D
         # jump tutorial_minigame_assembly
 
-        # This shows a character sprite. A placeholder is used, but you can
-        # replace it by adding a file named "eileen happy.png" to the images
-        # directory.
+    play music "music/Night-in-Venice.mp3"
 
-        play sound "audio/doorbell.wav"
-        "*bell rings*"
+    # Show a background. This uses a placeholder by default, but you can
+    # add a file (named either "bg room.png" or "bg room.jpg") to the
+    # images directory to show it.
+main
 
-        show tutorial sprite:
-            xalign 0.5
-            yalign 0.75
-        show table:
-            yalign 1.0
+    scene bg interior_sketch
 
-        # These display lines of dialogue.
+    # Testing purposes :D
+    # jump tutorial_minigame
 
-        # ACT 1: The First Encounter
+    # This shows a character sprite. A placeholder is used, but you can
+    # replace it by adding a file named "eileen happy.png" to the images
+    # directory.
 
+    play sound "audio/doorbell.wav"
+    "*bell rings*"
+
+    show tutorial_girl:
+        xalign 0.5
+        yalign 0.75
+    show table:
+        yalign 1.0
+
+# ACT 1: The First Encounter  
+label act1:
+    # These display lines of dialogue.
 
     label choices1:
         a curious "Hello...?"
@@ -79,9 +103,10 @@ label act1:
 
     label choices2_a:
         a sad "Oh, I'm sorry about that..."
-        show tutorial sprite at hop
-        a curious "Wait a minute- this IS the store!"
+        show tutorial_girl horrified at hop
+        a horrified "Wait a minute- this IS the store!"
         a annoyed "No need to lie about that... That's very mean of you."
+        show tutorial_girl sad
         "-1 heart"
         $ hearts -= 1
         jump choices2_common
@@ -129,12 +154,14 @@ label act1:
                         menu:
                             "Abigail? What a lovely name.":
                                 a curious "Thank you... it really means a lot to me."
+                                show tutorial_girl happy_eyesclosed
                                 "+1 heart"
                                 $ hearts += 1
                                 jump cutscene1
             "Where are your parents? ...Can't they fix it for you?":
                 a annoyed "Well, they don't know I'm here."
                 a sad "...Though I doubt they'd care."
+                show tutorial_girl sad
                 "-1 heart"
                 $ hearts -= 1
                 a sad "..."
@@ -159,6 +186,7 @@ label act1:
                 a neutral "I've had Princess Caroline since 4th grade. Out of all my toys, Princess Caroline is my favorite."
                 menu:
                     "You must love her a lot.":
+                        show tutorial_girl happy_eyesclosed
                         "+1 heart"
                         $ hearts += 1
                         a happy "I do love her!"
@@ -166,6 +194,7 @@ label act1:
                         a neutral "It's okay though, I don't need any other toys. Just her."
                         jump choices6
                     "You sure are spoiled, huh?":
+                        show tutorial_girl sad
                         "-1 heart"
                         $ hearts -= 1
                         a horrified "That's what I always hear from others too... It's not like that at all!"
@@ -184,6 +213,7 @@ label act1:
         a sad "She got hurt... really badly... she was trying to protect me."
         menu:
             "C'mon, am I really supposed to believe that?":
+                show tutorial_girl sad
                 "-1 heart"
                 $ hearts -= 1
                 a annoyed "It's true! There were monsters out to get me, but Princess Caroline stopped the enemies before they could hurt me."
@@ -207,11 +237,13 @@ label act1:
         a sad "I lost my only friend."
         menu:
             "You can try moving on...":
+                show tutorial_girl sad
                 "-1 heart"
                 $ hearts -= 1
                 a horrified "How can you say that? It's not that easy, you know?"
                 jump checkpoint1
             "Let's try fixing her before saying anything else.":
+                show tutorial_girl happy_eyesclosed
                 "+1 heart"
                 $ hearts += 1
                 a neutral "You're right... Someone told me before that a strong heart can heal anything!"
@@ -230,6 +262,78 @@ label checkpoint1:
 
 label act2:
     #act2 starts here
+    "She comes from a faraway kingdom… a kingdom you don’t know about (it’s a seret)!!"
+        a sad "Well… the princess was always lonely in her tower… the king would work all night while the queen was away playing."
+    show tutorial_girl sad
+        a sad"The villagers in her kingdom are scared of her because of a curse"
+        menu:
+            "A curse?":
+
+        a sad "YES! A curse placed on her by the queen herself. Poor Princess Caroline… all alone with no one to love. Not even the King can save her.." 
+        menu:
+            "A curse?"
+            "Is there a reason why?"
+
+label act2Sel9: 
+    menu:
+            "What about the monsters from earlier?"
+            "You have quite the imagination":
+                jump selction9a
+
+label selection9a:   
+        a sad "Yeah, that’s what the adults say too… I try to explain to them, I tried so hard; they all tell me that I’m lying or that it’s all in my head"
+        menu:
+            "Is it?"
+                show tutorial_girl sad
+                "-1 heart"
+                $ hearts -= 1
+            "Why would they say that?"
+
+        
+label selection9b:   
+        a sad "The adults… they should know..! They saw the monsters and they knew of the curse. I don’t know why they don’t believe me… "
+
+label selection9:   
+        a sad "The monsters are the worst. Everyday the Princess gets hurt, every day I fail to protect her"
+        menu:
+            "Do the adults help you?"
+        a sad "No… the adults are the villains"
+        menu:
+            "Villains?"
+        
+        a neutral "They’re horrible… even worse than the monsters. They know about the monsters… they know of the queen’s curse… every day the Princess is hurting and every day they [adults] are watching."
+        menu:
+            "You probably deserve it":
+                jump selction10a
+            "That’s not nice of them to behave this way"
+                show tutorial_girl happy
+                "+1 heart"
+                $ hearts += 1
+                jump selction10b
+
+label selection10a:
+        a sad "Really? Does Princess Caroline deserve all the hurt?"
+            menu:
+                "Yes"
+                    "-1 heart"
+                    $ hearts -= 1
+                "No, she doesn't"
+    
+label selection10b:
+        a sad " I don’t know why everyone is so mean to me and princess…"
+        a sad " What did she do to deserve all of this?"
+            menu:
+                "She doesn’t deserve it, at all"
+                "Probably something you did"
+                    "-1 heart"
+                    $ hearts -= 1
+
+
+
+
+
+
+
 
 
 label tutorial_minigame_assembly:
