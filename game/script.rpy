@@ -444,11 +444,20 @@ label tutorial_minigame_assembly:
     show tutorial_girl neutral:
         xalign 0.85
         yalign 1.0
+    show broken doll:
+            xalign 0.40
+            yalign 0.6
 
     # a "testing"
     $ tool = ""
     call screen tutorial_doll
     $ is_currently_minigame = False
+    show tutorial_girl neutral:
+        xalign 0.5
+        yalign 1.0
+    show broken doll:
+            xalign 0.40
+            yalign 0.75
     jump choices4
     # jump choices8
 
