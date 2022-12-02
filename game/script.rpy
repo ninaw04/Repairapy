@@ -5,6 +5,8 @@
 
 define a = Character('[Abigail]', color="#a1785c", image="tutorial_girl")
 define i = Character("Idol", color="#f96995", image="pop_star.png")
+define doll = Character("Princess Caroline", image = "doll_broken_full.png")
+define random = Character("Random")
 default tool = "no tool"
 
 
@@ -262,25 +264,22 @@ label act2:
     "She comes from a faraway kingdom… a kingdom you don’t know about (it’s a seret)!!"
     a sad "Well… the princess was always lonely in her tower… the king would work all night while the queen was away playing."
     show tutorial_girl sad
-    a sad"The villagers in her kingdom are scared of her because of a curse"
+    a sad "The villagers in her kingdom are scared of her because of a curse"
     menu:
-        "A curse?"
-
-        a sad "YES! A curse placed on her by the queen herself. Poor Princess Caroline… all alone with no one to love. Not even the King can save her.." 
-        menu:
-            "A curse?"
+        "A curse?":
+            a sad "YES! A curse placed on her by the queen herself. Poor Princess Caroline… all alone with no one to love. Not even the King can save her.." 
             "Is there a reason why?"
 
 label act2Sel9: 
     menu:
             "What about the monsters from earlier?"
             "You have quite the imagination":
-                jump selction9a
+                jump selection9a
 
 label selection9a:   
         a sad "Yeah, that’s what the adults say too… I try to explain to them, I tried so hard; they all tell me that I’m lying or that it’s all in my head"
         menu:
-            "Is it?"
+            "Is it?":
                 show tutorial_girl sad
                 "-1 heart"
                 $ hearts -= 1
@@ -293,37 +292,36 @@ label selection9b:
 label selection9:   
         a sad "The monsters are the worst. Everyday the Princess gets hurt, every day I fail to protect her"
         menu:
-            "Do the adults help you?"
-        a sad "No… the adults are the villains"
-        menu:
-            "Villains?"
-        
-        a neutral "They’re horrible… even worse than the monsters. They know about the monsters… they know of the queen’s curse… every day the Princess is hurting and every day they [adults] are watching."
+            "Do the adults help you?":
+                a sad "No… the adults are the villains"
+            "Villains?":
+                # a neutral "They’re horrible… even worse than the monsters. They know about the monsters… they know of the queen’s curse… every day the Princess is hurting and every day they [adults] are watching."
+                a neutral "They’re horrible… even worse than the monsters. They know about the monsters… they know of the queen’s curse… every day the Princess is hurting and every day the adults are watching."
         menu:
             "You probably deserve it":
                 jump selction10a
-            "That’s not nice of them to behave this way"
+            "That’s not nice of them to behave this way":
                 show tutorial_girl happy
                 "+1 heart"
                 $ hearts += 1
-                jump selction10b
+                jump selection10b
 
 label selection10a:
         a sad "Really? Does Princess Caroline deserve all the hurt?"
-            menu:
-                "Yes"
-                    "-1 heart"
-                    $ hearts -= 1
-                "No, she doesn't"
+        menu:
+            "Yes":
+                "-1 heart"
+                $ hearts -= 1
+            "No, she doesn't"
     
 label selection10b:
         a sad " I don’t know why everyone is so mean to me and princess…"
         a sad " What did she do to deserve all of this?"
-            menu:
-                "She doesn’t deserve it, at all"
-                "Probably something you did"
-                    "-1 heart"
-                    $ hearts -= 1
+        menu:
+            "She doesn’t deserve it, at all"
+            "Probably something you did":
+                "-1 heart"
+                $ hearts -= 1
 
 
 label badEndingRoute:
@@ -331,22 +329,22 @@ label badEndingRoute:
         a neutral "...."
         a neutral "something… I… did?"
         a neutral "oh..."
-            menu:
-                "I mean… yeah… haven’t you always questioned it?":
-                    jump badChoice1A
-                "People don’t bully for no reason":
-                    jump badChoice1B
+        menu:
+            "I mean… yeah… haven’t you always questioned it?":
+                jump badChoice1A
+            "People don’t bully for no reason":
+                jump badChoice1B
 
 label badChoice1A:
     a sad "Well… part of me was hoping… I was wrong"
     a sad "Sorry… haha… it was a silly thought"
     a sad "..."
     a sad " I just wanted to be saved…"
-        menu:
-            "Be honest, you’re the reason why the doll is broken? ":
-                jump badChoice2A
-            "Yeah, it’s really pathetic looking for help from a stranger of all people":
-                jump badChoice2B
+    menu:
+        "Be honest, you’re the reason why the doll is broken? ":
+            jump badChoice2A
+        "Yeah, it’s really pathetic looking for help from a stranger of all people":
+            jump badChoice2B
 
 label badChoice1B:
     a sad "They… don’t…"
@@ -354,11 +352,11 @@ label badChoice1B:
     a sad "I’m sorry…. I’m really sorry…."
     a sad "I…you’re right.. There’s a reason for everything"
     a sad " All I wanted was to be saved…"
-        menu:
-            "You’re pathetic aren’t you? Looking for help from a worker. I don’t know you":
-                jump badChoice2B
-            "There’s a reason why the doll is broken, it’s your fault":
-                jump badChoice2A
+    menu:
+        "You’re pathetic aren’t you? Looking for help from a worker. I don’t know you":
+            jump badChoice2B
+        "There’s a reason why the doll is broken, it’s your fault":
+            jump badChoice2A
 
 label badChoice2A:
     a sad " … No…! You’re wrong… she’s not hurt because of me "
@@ -367,9 +365,10 @@ label badChoice2A:
     doll "..."
     a sad " I’m sorry! I’m sorry, okay? What more do you want from me?"
     a sad " … Princess Caroline?"
-        menu:
-            "Who got you the doll again, Abigail?"
-            "Tell me again, so your doll was bought by your parents?"
+    menu:
+        "Who got you the doll again, Abigail?":
+            pass
+        "Tell me again, so your doll was bought by your parents?"
 
 label badChoice2B:
     a sad " … pathetic?"
@@ -379,33 +378,33 @@ label badChoice2B:
     a sad " You… too? Not you too Princess Caroline…"
     a sad "I’m sorry… I’m so sorry… What do I do now? What do you want from me?"
     a sad " … Princess Caroline?"
-        menu:
-            "Tell me again, so your doll was bought by your parents?":
-                jump badChoice3C
-            "Who got you the doll again, Abigail?":
-                jump badChoice3C
+    menu:
+        "Tell me again, so your doll was bought by your parents?":
+            jump badChoice3C
+        "Who got you the doll again, Abigail?":
+            jump badChoice4C
 
     
 label badChoice3C:
     a sad "…. My parents did buy me her.."
     a sad "…. But… I don’t know why that’s important…"
-        menu:
-            "You don’t see it at all?":
-                jump badChoice3A
-            "Are you that dumb?":
-                jump badChoice3B
+    menu:
+        "You don’t see it at all?":
+            jump badChoice3A
+        "Are you that dumb?":
+            jump badChoice3B
 
 label badChoice3A:
     a sad "….."
     a sad "Oh… you’re right…"
     a sad "I…I’m sorry"
-    a sad "I guess they did buy me… princess..caroline":
+    a sad "I guess they did buy me… princess..caroline"
     a sad " I am ungrateful "
-        menu:
-            "The bullies too, they have a reason":
-                jump badChoice4C
+    menu:
+        "The bullies too, they have a reason":
+            jump badChoice4C
 
-label badChoice3C:
+label badChoice4C:
     a sad"Why… Do you keep saying that??"
     a sad "..." 
     a sad "Oh..! I see "
@@ -419,7 +418,8 @@ label badChoice3C:
 
     random "Have you seen our daughter?"
     menu:
-        "Who?"
+        "Who?":
+            pass
         "May I help you?"
 
     other random "Abigail?? Abigail Smith?? She was last seen leaving this shop"
@@ -428,7 +428,8 @@ label badChoice3C:
     Mother "She’s been missing for days and the police are utterly useless"
     Father "Do you know why she was here?"
     menu:
-        "She came to fix her doll"
+        "She came to fix her doll":
+            pass
         "I just did my job"
     Father "Please… if you see her.. Call us"
 
