@@ -17,11 +17,11 @@ image tutorial_girl happy_eyesclosed = im.Scale("tutorial_girl happy_eyesclosed.
 image tutorial_girl sad = im.Scale("tutorial_girl sad.png", 440, 709)
 image tutorial_girl shocked = im.Scale("tutorial_girl shocked.png", 440, 709)
 
-image a neutral = im.Scale("side tutorial_girl neutral.png", 350, 350)
-image a happy = im.Scale("side tutorial_girl happy.png", 350, 350)
-image a happy_eyesclosed = im.Scale("side tutorial_girl happy_eyesclosed.png", 350, 350)
-image a sad = im.Scale("side tutorial_girl sad.png", 350, 350)
-image a shocked = im.Scale("side tutorial_girl shocked.png", 350, 350)
+image a neutral = im.Scale("side tutorial_girl_neutral.png", 350, 350)
+image a happy = im.Scale("side tutorial_girl_happy.png", 350, 350)
+image a happy_eyesclosed = im.Scale("side tutorial_girl_happy_eyesclosed.png", 350, 350)
+image a sad = im.Scale("side tutorial_girl_sad.png", 350, 350)
+image a shocked = im.Scale("side tutorial_girl_shocked.png", 350, 350)
 
 
 define i = Character("Idol", color="#f96995", image="pop_star.png")
