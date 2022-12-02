@@ -59,7 +59,7 @@ label start:
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
 
-    scene bg interior_sketch
+    scene bg interior
 
     # Testing purposes :D
     # jump tutorial_minigame
