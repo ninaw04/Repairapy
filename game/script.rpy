@@ -13,7 +13,7 @@ default tool = "no tool"
 #resizing images
 image tutorial_girl neutral = im.Scale("tutorial_girl neutral.png", 440, 709)
 image tutorial_girl happy = im.Scale("tutorial_girl happy.png", 440, 709)
-image tutorial_girl happy_eyesclosed = im.Scale("tutorial_girl happy_eyesclosed.png", 440, 709)
+image tutorial_girl happy_eyesclosed = im.Scale("tutorial_girl happy eyesclosed.png", 440, 709)
 image tutorial_girl sad = im.Scale("tutorial_girl sad.png", 440, 709)
 image tutorial_girl shocked = im.Scale("tutorial_girl shocked.png", 440, 709)
 
@@ -212,7 +212,7 @@ label act1:
                 show tutorial_girl sad
                 "-1 heart"
                 $ hearts -= 1
-                a shock "It's true! There were monsters out to get me, but Princess Caroline stopped the enemies before they could hurt me."
+                a shocked "It's true! There were monsters out to get me, but Princess Caroline stopped the enemies before they could hurt me."
                 a sad "I couldn't protect her though... I failed as her knight and friend."
                 menu:
                     "She's just a doll, she can't do anything.":
