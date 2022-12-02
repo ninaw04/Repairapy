@@ -445,7 +445,7 @@ label tutorial_minigame_assembly:
         xalign 0.85
         yalign 1.0
 
-    a "testing"
+    # a "testing"
     $ tool = ""
     call screen tutorial_doll
     $ is_currently_minigame = False

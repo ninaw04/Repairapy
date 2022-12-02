@@ -11,7 +11,9 @@ init python:
         #check if the correct tool
         print("tool: ", store.tool)
 
-        if not drop or store.tool != "needle":
+        # if not drop or store.tool != "needle":
+        #     return
+        if not drop:
             return
         
         if drags[0].drag_name == "head" and drop.drag_name == "headhb":
@@ -44,7 +46,7 @@ init python:
 screen tutorial_doll:
     add 'bg tabletop.png'
 
-    use toolbar
+    # use toolbar
 
     draggroup:
         drag:
