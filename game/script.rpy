@@ -7,7 +7,7 @@ define a = Character('[Abigail]', color="#a1785c", image="tutorial_girl")
 define i = Character("Idol", color="#f96995", image="pop_star.png")
 define doll = Character("Princess Caroline", image = "doll_broken_full.png")
 define random = Character("Random")
-define other random = Character("Other Random")
+define other_random = Character("Other Random")
 define parents = Character("Parents")
 define Mother = Character("Mother")
 define Father = Character("Father")
@@ -300,7 +300,7 @@ label selection9:
                 a neutral "They’re horrible… even worse than the monsters. They know about the monsters… they know of the queen’s curse… every day the Princess is hurting and every day the adults are watching."
         menu:
             "You probably deserve it":
-                jump selction10a
+                jump selection10a
             "That’s not nice of them to behave this way":
                 show tutorial_girl happy
                 "+1 heart"
@@ -420,7 +420,7 @@ label badChoice4C:
     "*bell chimes*"
 
     random "Have you seen our daughter?"
-    other random "Abigail?? Abigail Smith?? She was last seen leaving this shop."
+    other_random "Abigail?? Abigail Smith?? She was last seen leaving this shop."
     parents "We’re her parents.. Our daughter never came home that day."
     parents "Please… we need to find our precious daughter."
     Mother "She’s been missing for days and the police are utterly useless."
@@ -434,6 +434,7 @@ label badChoice4C:
     Mother "Oh please.. Let her be safe."
 
     Father "Sorry for interrupting you and your work... we won’t bother you anymore."
+    return
 
 
 
