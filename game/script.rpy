@@ -11,20 +11,17 @@ default tool = "no tool"
 
 
 #resizing images
-image tutorial_girl neutral = im.Scale("tutorial_girl neutral.png", 440, 709)
-image tutorial_girl happy = im.Scale("tutorial_girl happy.png", 440, 709)
-image tutorial_girl happy_eyesclosed = im.Scale("tutorial_girl happy_eyesclosed.png", 440, 709)
-image tutorial_girl sad = im.Scale("tutorial_girl sad.png", 440, 709)
-image tutorial_girl curious = im.Scale("tutorial_girl curious.png", 440, 709)
-image tutorial_girl horrified = im.Scale("tutorial_girl horrified.png", 440, 709)
-image tutorial_girl annoyed = im.Scale("tutorial_girl annoyed.png", 440, 709)
+image tutorial_girl neutral = im.Scale("tutorial_girl_neutral.png", 440, 709)
+image tutorial_girl happy = im.Scale("tutorial_girl_happy.png", 440, 709)
+image tutorial_girl happy_eyesclosed = im.Scale("tutorial_girl_happy_eyesclosed.png", 440, 709)
+image tutorial_girl sad = im.Scale("tutorial_girl_sad.png", 440, 709)
+image tutorial_girl shocked = im.Scale("tutorial_girl_shocked.png", 440, 709)
 
-image a neutral = im.Scale("side tutorial_girl neutral.png", 350, 350)
-image a happy = im.Scale("side tutorial_girl happy.png", 350, 350)
-image a sad = im.Scale("side tutorial_girl sad.png", 350, 350)
-image a curious = im.Scale("side tutorial_girl curious.png", 350, 350)
-image a horrified = im.Scale("side tutorial_girl horrified.png", 350, 350)
-image a annoyed = im.Scale("side tutorial_girl annoyed.png", 350, 350)
+image a neutral = im.Scale("side tutorial_girl_neutral.png", 350, 350)
+image a happy = im.Scale("side tutorial_girl_happy.png", 350, 350)
+image a happy_eyesclosed = im.Scale("side tutorial_girl_happy_eyesclosed.png", 350, 350)
+image a sad = im.Scale("side tutorial_girl_sad.png", 350, 350)
+image a shocked = im.Scale("side tutorial_girl_shocked.png", 350, 350)
 
 
 define i = Character("Idol", color="#f96995", image="pop_star.png")
@@ -85,7 +82,7 @@ label act1:
     # These display lines of dialogue.
 
     label choices1:
-        a curious "Hello...?"
+        a neutral "Hello...?"
         menu:
             "Hello, how may I help you?":
                 jump choices2
@@ -93,7 +90,7 @@ label act1:
                 jump choices2
 
     label choices2:
-        a curious "Is this that antique shop that fixes things?"
+        a neutral "Is this that antique shop that fixes things?"
         menu:
             "Yes, it is! How may I help you?":
                 jump choices2_common
@@ -102,9 +99,9 @@ label act1:
 
     label choices2_a:
         a sad "Oh, I'm sorry about that..."
-        show tutorial_girl horrified at hop
-        a horrified "Wait a minute- this IS the store!"
-        a annoyed "No need to lie about that... That's very mean of you."
+        show tutorial_girl shocked at hop
+        a shocked "Wait a minute- this IS the store!"
+        a sad "No need to lie about that... That's very mean of you."
         show tutorial_girl sad
         "-1 heart"
         $ hearts -= 1
@@ -152,13 +149,13 @@ label act1:
                         a neutral "Well, at least I try to be."
                         menu:
                             "Abigail? What a lovely name.":
-                                a curious "Thank you... it really means a lot to me."
+                                a neutral "Thank you... it really means a lot to me."
                                 show tutorial_girl happy_eyesclosed
                                 "+1 heart"
                                 $ hearts += 1
                                 jump cutscene1
             "Where are your parents? ...Can't they fix it for you?":
-                a annoyed "Well, they don't know I'm here."
+                a sad "Well, they don't know I'm here."
                 a sad "...Though I doubt they'd care."
                 show tutorial_girl sad
                 "-1 heart"
@@ -196,9 +193,9 @@ label act1:
                         show tutorial_girl sad
                         "-1 heart"
                         $ hearts -= 1
-                        a horrified "That's what I always hear from others too... It's not like that at all!"
+                        a shocked "That's what I always hear from others too... It's not like that at all!"
                         a sad "Mommy and daddy are just too budy to play with me, that's the only reason why I have so many toys..."
-                        a annoyed "But I don't care for them! Just princess."
+                        a neutral "But I don't care for them! Just princess."
                         jump choices6
 
     label choices6:
@@ -215,14 +212,14 @@ label act1:
                 show tutorial_girl sad
                 "-1 heart"
                 $ hearts -= 1
-                a annoyed "It's true! There were monsters out to get me, but Princess Caroline stopped the enemies before they could hurt me."
+                a shock "It's true! There were monsters out to get me, but Princess Caroline stopped the enemies before they could hurt me."
                 a sad "I couldn't protect her though... I failed as her knight and friend."
                 menu:
                     "She's just a doll, she can't do anything.":
                         jump choices8
             "Protect you?":
-                a horrified "It all happened so fast..."
-                a horrified "I was running away from these mean monsters and I couldn't escape. I didn't know what to do!"
+                a shocked "It all happened so fast..."
+                a shocked "I was running away from these mean monsters and I couldn't escape. I didn't know what to do!"
                 a happy "Princess Caroline helped me! She stopped the monsters from getting me."
                 a sad "...But she got hurt in the process."
                 a sad "I failed... I failed as a knight and friend."
@@ -231,7 +228,7 @@ label act1:
                         jump choices8
 
     label choices8:
-        a curious "That's the thing, she didn't need to do anything!"
+        a neutral "That's the thing, she didn't need to do anything!"
         a sad "I was supposed to protect her... me! I'm the knight, she shouldn't be in danger like that."
         a sad "I lost my only friend."
         menu:
@@ -239,7 +236,7 @@ label act1:
                 show tutorial_girl sad
                 "-1 heart"
                 $ hearts -= 1
-                a horrified "How can you say that? It's not that easy, you know?"
+                a shocked "How can you say that? It's not that easy, you know?"
                 jump checkpoint1
             "Let's try fixing her before saying anything else.":
                 show tutorial_girl happy_eyesclosed
@@ -254,14 +251,14 @@ label checkpoint1:
     if hearts >= 0:
         jump act2
     else:
-        a annoyed "You know what? It's okay, I can try fixing Princess Caroline myself. Sorry for wasting your time..."
+        a sad "You know what? It's okay, I can try fixing Princess Caroline myself. Sorry for wasting your time..."
         hide tutorial sprite
         "Failed Ending"
         return
 
 label act2:
     #act2 starts here
-    "She comes from a faraway kingdom… a kingdom you don’t know about (it’s a seret)!!"
+    "She comes from a faraway kingdom… a kingdom you don’t know about (it’s a secret)!!"
     a sad "Well… the princess was always lonely in her tower… the king would work all night while the queen was away playing."
     show tutorial_girl sad
     a sad "The villagers in her kingdom are scared of her because of a curse"
