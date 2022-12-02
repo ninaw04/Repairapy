@@ -11,17 +11,17 @@ default tool = "no tool"
 
 
 #resizing images
-image tutorial_girl neutral = im.Scale("tutorial_girl_neutral.png", 440, 709)
-image tutorial_girl happy = im.Scale("tutorial_girl_happy.png", 440, 709)
-image tutorial_girl happy_eyesclosed = im.Scale("tutorial_girl_happy_eyesclosed.png", 440, 709)
-image tutorial_girl sad = im.Scale("tutorial_girl_sad.png", 440, 709)
-image tutorial_girl shocked = im.Scale("tutorial_girl_shocked.png", 440, 709)
+image tutorial_girl neutral = im.Scale("tutorial_girl neutral.png", 440, 709)
+image tutorial_girl happy = im.Scale("tutorial_girl happy.png", 440, 709)
+image tutorial_girl happy_eyesclosed = im.Scale("tutorial_girl happy_eyesclosed.png", 440, 709)
+image tutorial_girl sad = im.Scale("tutorial_girl sad.png", 440, 709)
+image tutorial_girl shocked = im.Scale("tutorial_girl shocked.png", 440, 709)
 
-image a neutral = im.Scale("side tutorial_girl_neutral.png", 350, 350)
-image a happy = im.Scale("side tutorial_girl_happy.png", 350, 350)
-image a happy_eyesclosed = im.Scale("side tutorial_girl_happy_eyesclosed.png", 350, 350)
-image a sad = im.Scale("side tutorial_girl_sad.png", 350, 350)
-image a shocked = im.Scale("side tutorial_girl_shocked.png", 350, 350)
+image a neutral = im.Scale("side tutorial_girl neutral.png", 350, 350)
+image a happy = im.Scale("side tutorial_girl happy.png", 350, 350)
+image a happy_eyesclosed = im.Scale("side tutorial_girl happy_eyesclosed.png", 350, 350)
+image a sad = im.Scale("side tutorial_girl sad.png", 350, 350)
+image a shocked = im.Scale("side tutorial_girl shocked.png", 350, 350)
 
 
 define i = Character("Idol", color="#f96995", image="pop_star.png")
@@ -419,20 +419,20 @@ label badChoice4C:
             pass
         "May I help you?"
 
-    other random "Abigail?? Abigail Smith?? She was last seen leaving this shop"
-    parents "We’re her parents.. Our daughter never came home that day"
-    parents "Please… we need to find our precious daughter"
-    Mother "She’s been missing for days and the police are utterly useless"
+    other random "Abigail?? Abigail Smith?? She was last seen leaving this shop."
+    parents "We’re her parents.. Our daughter never came home that day."
+    parents "Please… we need to find our precious daughter."
+    Mother "She’s been missing for days and the police are utterly useless."
     Father "Do you know why she was here?"
     menu:
-        "She came to fix her doll":
+        "She came to fix her doll.":
             pass
-        "I just did my job"
-    Father "Please… if you see her.. Call us"
+        "I just did my job."
+    Father "Please… if you see her.. Call us."
 
-    Mother "Oh please.. Let her be safe "
+    Mother "Oh please.. Let her be safe."
 
-    Father "Sorry for interrupting you and your works… we won’t bother you anymore"
+    Father "Sorry for interrupting you and your work... we won’t bother you anymore."
 
 
 
@@ -441,7 +441,7 @@ label badChoice4C:
 
 label tutorial_minigame_assembly:
     $ is_currently_minigame = True
-    show tutorial sprite:
+    show tutorial_girl neutral:
         xalign 0.85
         yalign 1.0
 
