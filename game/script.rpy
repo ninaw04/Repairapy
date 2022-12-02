@@ -7,6 +7,10 @@ define a = Character('[Abigail]', color="#a1785c", image="tutorial_girl")
 define i = Character("Idol", color="#f96995", image="pop_star.png")
 define doll = Character("Princess Caroline", image = "doll_broken_full.png")
 define random = Character("Random")
+define other random = Character("Other Random")
+define parents = Character("Parents")
+define Mother = Character("Mother")
+define Father = Character("Father")
 default tool = "no tool"
 
 
@@ -410,15 +414,12 @@ label badChoice4C:
     a sad "It all happened for a reason"
     a neutral "Thank you… fixer… I finally understand"
     a neutral "*she pays and leaves*"
+    hide tutorial_girl
+    hide broken doll
     "few days later"
     "*bell chimes*"
 
     random "Have you seen our daughter?"
-    menu:
-        "Who?":
-            pass
-        "May I help you?"
-
     other random "Abigail?? Abigail Smith?? She was last seen leaving this shop."
     parents "We’re her parents.. Our daughter never came home that day."
     parents "Please… we need to find our precious daughter."
