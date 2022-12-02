@@ -9,7 +9,7 @@ init python:
 
     def drag_placed(drags, drop):
         #check if the correct tool
-        print("tool: ", store.tool)
+        
 
         # if not drop or store.tool != "needle":
         #     return
