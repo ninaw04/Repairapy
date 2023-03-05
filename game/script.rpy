@@ -1,9 +1,10 @@
-﻿# The script of the game goes in this file.
+﻿
+# The script of the game goes in this file.
 
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-define a = Character('[Abigail]', color="#a1785c", image="tutorial_girl")
+define a = Character('[Abigail]', color="#0cc0d4", image="tutorial_girl")
 define i = Character("Idol", color="#f96995", image="pop_star.png")
 define doll = Character("Princess Caroline", image = "doll_broken_full.png")
 define random = Character("Random")
@@ -36,19 +37,36 @@ image table = "bigtable.png"
 image broken doll = im.Scale("doll_broken_full.png", 200, 400)
 
 
+
+
+
+default heartCount = 0
+
+
+
+
 # Variables we may need
 define is_currently_minigame = False
+
+    # starting at top left corner
 
 transform hop:
     linear 0.5 yoffset -150
     linear 0.5 yoffset 0
 
+# function for displaying gained heart count within a horizontal box.
+screen displayHearts(count):
+    if(count > 0):
+        hbox:
+            for i in range(heartCount):
+                add im.Scale("heart.png",100,100)
+    
 
 # The game starts here.
-
 label start:
+   
 
-    $ hearts = 0
+    $ heartCount = 0
     $ Abigail = "???"
 
 
@@ -81,10 +99,11 @@ label start:
     show table:
         yalign 1.0
 
+
+
 # ACT 1: The First Encounter  
 label act1:
     # These display lines of dialogue.
-
     label choices1:
         a neutral "Hello...?"
         menu:
@@ -104,11 +123,14 @@ label act1:
     label choices2_a:
         a sad "Oh, I'm sorry about that..."
         show tutorial_girl shocked at hop
+        
         a shocked "Wait a minute- this IS the store!"
         a sad "No need to lie about that... That's very mean of you."
         show tutorial_girl sad
+        
         "-1 heart"
-        $ hearts -= 1
+        $ heartCount -= 1
+        show screen displayHearts(heartCount)
         jump choices2_common
 
     label choices2_common:
@@ -156,14 +178,16 @@ label act1:
                                 a neutral "Thank you... it really means a lot to me."
                                 show tutorial_girl happy_eyesclosed
                                 "+1 heart"
-                                $ hearts += 1
+                                $ heartCount += 1
+                                show screen displayHearts(heartCount)
                                 jump cutscene1
             "Where are your parents? ...Can't they fix it for you?":
                 a sad "Well, they don't know I'm here."
                 a sad "...Though I doubt they'd care."
                 show tutorial_girl sad
                 "-1 heart"
-                $ hearts -= 1
+                $ heartCount -= 1
+                show screen displayHearts(heartCount)
                 a sad "..."
                 a happy "I'ts okay though, I'm fine! Princess Caroline keeps me company."
                 menu:
@@ -188,7 +212,9 @@ label act1:
                     "You must love her a lot.":
                         show tutorial_girl happy_eyesclosed
                         "+1 heart"
-                        $ hearts += 1
+                        $ heartCount += 1
+                        show screen displayHearts(heartCount)
+                        
                         a happy "I do love her!"
                         a sad "Mommy and daddy are too busy to play with me sometimes... That's why they always buy me toys."
                         a neutral "It's okay though, I don't need any other toys. Just her."
@@ -196,7 +222,8 @@ label act1:
                     "You sure are spoiled, huh?":
                         show tutorial_girl sad
                         "-1 heart"
-                        $ hearts -= 1
+                        $ heartCount -= 1
+                        show screen displayHearts(heartCount)
                         a shocked "That's what I always hear from others too... It's not like that at all!"
                         a sad "Mommy and daddy are just too budy to play with me, that's the only reason why I have so many toys..."
                         a neutral "But I don't care for them! Just princess."
@@ -215,7 +242,8 @@ label act1:
             "C'mon, am I really supposed to believe that?":
                 show tutorial_girl sad
                 "-1 heart"
-                $ hearts -= 1
+                $ heartCount -= 1
+                show screen displayHearts(heartCount)
                 a shocked "It's true! There were monsters out to get me, but Princess Caroline stopped the enemies before they could hurt me."
                 a sad "I couldn't protect her though... I failed as her knight and friend."
                 menu:
@@ -239,20 +267,24 @@ label act1:
             "You can try moving on...":
                 show tutorial_girl sad
                 "-1 heart"
-                $ hearts -= 1
+                $ heartCount -= 1
+                show screen displayHearts(heartCount)
                 a shocked "How can you say that? It's not that easy, you know?"
                 jump checkpoint1
             "Let's try fixing her before saying anything else.":
                 show tutorial_girl happy_eyesclosed
                 "+1 heart"
-                $ hearts += 1
+                $ heartCount += 1
+                show screen displayHearts(heartCount)
+               
+               
                 a neutral "You're right... Someone told me before that a strong heart can heal anything!"
                 a sad "Thank you... I'm just scared of losing her."
                 jump checkpoint1
 
 label checkpoint1:
-    #check hearts to continue/ end game
-    if hearts >= 0:
+    #check heartCount to continue/ end game
+    if heartCount >= 0:
         jump act2
     else:
         a sad "You know what? It's okay, I can try fixing Princess Caroline myself. Sorry for wasting your time..."
@@ -283,7 +315,8 @@ label selection9a:
             "Is it?":
                 show tutorial_girl sad
                 "-1 heart"
-                $ hearts -= 1
+                $ heartCount -= 1
+                show screen displayHearts(heartCount)
             "Why would they say that?"
 
         
@@ -304,7 +337,8 @@ label selection9:
             "That’s not nice of them to behave this way":
                 show tutorial_girl happy
                 "+1 heart"
-                $ hearts += 1
+                $ heartCount += 1
+                show screen displayHearts(heartCount)
                 jump selection10b
 
 label selection10a:
@@ -312,7 +346,8 @@ label selection10a:
         menu:
             "Yes":
                 "-1 heart"
-                $ hearts -= 1
+                $ heartCount -= 1
+                show screen displayHearts(heartCount)
             "No, she doesn't"
     
 label selection10b:
@@ -322,11 +357,12 @@ label selection10b:
             "She doesn’t deserve it, at all"
             "Probably something you did":
                 "-1 heart"
-                $ hearts -= 1
+                $ heartCount -= 1
+                show screen displayHearts(heartCount)
 
 
 label badEndingRoute:
-    if hearts < 2:
+    if heartCount < 2:
         a neutral "...."
         a neutral "something… I… did?"
         a neutral "oh..."
