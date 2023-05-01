@@ -447,6 +447,8 @@ label badEnding:
     pause 1.0
     scene black
     $ renpy.pause(1.0, hard=True)
+    play sound "audio/BadEndingReport.mp3"
+    $ renpy.pause(35.0, hard=True)
     return
 
 label goodEnding:
