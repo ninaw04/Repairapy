@@ -11,9 +11,9 @@ define random = Character("Random")
 define friend = Character("Friend", color="#fdb228d8")
 define other_random = Character("Other Random")
 define parents = Character("Parents")
-define father = Character("Father",color="#2b9ef5")
+define father = Character("Father",color="#ff4400")
 define mother = Character("Mother",color="#50ffc8")
-define unknown = Character("???",color="#2b9ef5")
+define unknown = Character("???",color="#ff4400")
 define unknown2 = Character("???",color="#50ffc8")
 default tool = "no tool"
 
