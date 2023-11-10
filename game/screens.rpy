@@ -157,7 +157,7 @@ style minigame_window:
     background Image("gui/minigame_textbox.png", xalign=0.85, yalign = 0.20)
 
 style namebox:
-    xpos gui.name_xpos
+    xpos 540
     xanchor gui.name_xalign
     xsize gui.namebox_width
     ypos gui.name_ypos
@@ -174,10 +174,9 @@ style say_label:
 style say_dialogue:
     properties gui.text_properties("dialogue")
 
-    xpos gui.dialogue_xpos
+    xpos 440
     xsize gui.dialogue_width
-    ypos gui.dialogue_ypos
-
+    ypos 140
     adjust_spacing False
 
 ## Input screen ################################################################

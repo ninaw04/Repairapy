@@ -4,17 +4,17 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-define a = Character('[Abigail]', color="#0cc0d4", image="a")
+define a = Character('[Abigail]', color="#cf850d", image="a", who_outlines=[(3, "#6b301c", 1, 1)])
 define i = Character("Idol", color="#f96995", image="pop_star.png")
 define doll = Character("Princess Caroline", image = "doll_broken_full.png")
 define random = Character("Random")
-define friend = Character("Friend", color="#fdb228d8")
+define friend = Character("Friend", color="#e02589d8", who_outlines=[(3, "#450756", 1, 1)])
 define other_random = Character("Other Random")
 define parents = Character("Parents")
-define father = Character("Father",color="#ff4400")
-define mother = Character("Mother",color="#50ffc8")
-define unknown = Character("???",color="#ff4400")
-define unknown2 = Character("???",color="#50ffc8")
+define father = Character("Father",color="#113799", who_outlines=[(3, "#121c57", 1, 1)])
+define mother = Character("Mother",color="#2b8939", who_outlines=[(3, "#0e4338", 1, 1)])
+define unknown = Character("???",color="#113799", who_outlines=[(3, "#121c57", 1, 1)])
+define unknown2 = Character("???",color="#2b8939", who_outlines=[(3, "#0e4338", 1, 1)])
 default tool = "no tool"
 
 
@@ -141,10 +141,11 @@ label act1:
         
     label selection2:
         a neutral "Can you please help me fix my friend? She's really hurt..."
+
+        show box_v1 at left
+
         "{i}The girl pulls out a box, inside is a dismembered doll.{/i}"
-        show broken doll:
-            xalign 0.40
-            yalign 0.75
+        show box_v1 at left
         menu:
             "I don't think so.":
                 jump ending1
@@ -361,7 +362,7 @@ label act2:
 
 
 label ending1:
-    hide broken doll
+    hide box_v1
     a sad "Oh… I'm sorry for bothering you. It won't happen again.."
     show a:
         easein .5 alpha 0
@@ -585,8 +586,9 @@ label fragment0:
     scene black
     "{i}...Something weird is happening.{/i}"
     "{i}There's... kids in a plaground{/i}"
-    "{i}Abigail is on the ground and surrounded by other kids. She's covering her face.{/i}"
+    "{i}This... girl is on the ground and surrounded by other kids. She's covering her face.{/i}"
     "{i}And... her doll is broken{/i}"
+    "{b}Princess...Caroline...{/b}"
     scene bg interior
     $ Abigail = "Abigail"
     show a happy:
@@ -607,6 +609,7 @@ label fragment1:
     "{i}I wish there was art to show what I am experiencing right now.{/i}"
     "{i}Ok, and now her doll looks more human-like.{/i}"  
     "{i}And wow, that doll is looking very hurt...{/i}"
+    "{b}I'm sorry...{/b}"
     
     scene bg interior
     $ Abigail = "Abigail"
@@ -624,6 +627,11 @@ label fragment2:
     scene black
     "{i}I see... a younger looking Abigail.{/i}"
     "{i}She's hugging her knees while her parents(?) argue in the background{/i}"
+    unknown "I can't believe you did this again (REDACTED). How many times do we have to go through this?"
+    unknown2 "Oh, please. Don't act like you're perfect. You're just as awful as me."
+    "..."
+    "There's a princess... she's just like me!"
+    "Hm... not really.. I'm still waiting for my happily ever after."
     "{i}Now her parents are going to her... and giving her the doll?{/i}"
     scene bg interior
     $ Abigail = "Abigail"
