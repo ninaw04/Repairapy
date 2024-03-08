@@ -17,6 +17,12 @@ define unknown = Character("???",color="#113799", who_outlines=[(3, "#121c57", 1
 define unknown2 = Character("???",color="#2b8939", who_outlines=[(3, "#0e4338", 1, 1)])
 default tool = "no tool"
 
+# NVL characters are used for the phone texting
+define p_nvl = Character("Me", kind=nvl, callback=Phone_SendSound)
+define f_nvl = Character("Friend", kind=nvl, callback=Phone_ReceiveSound)
+
+define config.adv_nvl_transition = None
+define config.nvl_adv_transition = Dissolve(0.3)
 
 #resizing images
 image a neutral = im.Scale("tutorial_girl_neutral.png", 440, 709)
@@ -73,6 +79,9 @@ screen displayHearts(count):
 
 # The game starts here.
 label start:
+
+    
+  
    
 
     $ heartCount = 0
@@ -227,13 +236,15 @@ label act1:
                 a happy "Mommy and Daddy gave me Princess Caroline when I was little! Out of all my friends, Princess Caroline is my favorite friend!"
     label selection7:
         menu:
-            "You honestly seem spoiled.":
-                a sad "Spoiled? What's that?"
+            "You honestly seem lonely.":
+                a sad "Lonely?"
                 menu:
-                    "Spoiled is what you are. Like a spoiled brat.":
-                        a shocked "It’s not like that at all! Mommy and daddy are too busy to play with me. I only get toys when I’m sad... I don’t want any more friends, only Princess Caroline!"
+                    "Yeah do you have any friends at all?":
+                        a shocked "No no no! You got it all wrong!"
+                        a shocked "Mommy and daddy are too busy to play with me. I only get toys when I’m sad..."
+                        a happy "I don't NEED friends! Princess Caroline is enough for me!"
                         pause 1
-                        a sad "Am I spoiled?"
+                        a sad "Am I lonely?"
                         "-1 heart"
                         $ heartCount -= 1
                         show screen displayHearts(heartCount)
@@ -367,10 +378,22 @@ label ending1:
     show a:
         easein .5 alpha 0
     pause 2
-    friend "I haven’t had anyone come in for a long time now… why did you turn that girl away from our business?"
-    friend "I thought you could help me… I was wrong. I’m sorry for ever putting faith that you could help."
-    friend "Leave me alone."
-    friend "Leave this store."
+    "{i}Phone rings{/i}"
+
+    nvl_narrator "You have entered the chat"
+    f_nvl "Hey! How's running the store?"
+    p_nvl "ehh not bad ig"
+    p_nvl "some kid came in wanting to get her doll fixed"
+    f_nvl "Oh? How did it go?"
+    p_nvl "idk turned her away lol"
+    f_nvl "What? Why would you do that?"
+    f_nvl "You know I haven't had anyone come into the store for a long time now..."
+    f_nvl "Why would you turn her away from my business?"
+    p_nvl "I'm sorry..."
+    f_nvl "I thought you were my friend."
+    f_nvl "Just close early. I'm done with you."
+
+    
     pause 1
     "Failed Ending"
     pause 1
@@ -585,7 +608,13 @@ label tutorial_minigame_dress:
 label fragment0:
     scene black
     "{i}...Something weird is happening.{/i}"
+
+    scene bg fragment1
+
     "{i}There's... kids in a plaground{/i}"
+
+    scene bg fragment1a
+
     "{i}This... girl is on the ground and surrounded by other kids. She's covering her face.{/i}"
     "{i}And... her doll is broken{/i}"
     "{b}Princess...Caroline...{/b}"
@@ -604,12 +633,25 @@ label fragment0:
 label fragment1:
     scene black
     "{i}... this again{/i}"
-    "{i}Abigail is still hurt and on the ground.{/i}"
-    "{i}Wait... now she's a knight in a kingdom?{/i}"
-    "{i}I wish there was art to show what I am experiencing right now.{/i}"
-    "{i}Ok, and now her doll looks more human-like.{/i}"  
-    "{i}And wow, that doll is looking very hurt...{/i}"
-    "{b}I'm sorry...{/b}"
+
+    scene bg fragment1a
+
+    "{i}Abigail is still hurt and on the ground...{/i}"
+    scene
+    scene bg fragment 2
+
+    "{i}huh?{/i}"  
+    "{i}This sudden change...{/i}"
+    
+    a "{i}I can't keep these monsters away...!{/i}"
+
+    scene bg fragment 2a
+
+    a "{i}I'm sorry...{/i}"
+    
+    $ renpy.pause()
+
+    a "{b}Princess Caroline{/b}"
     
     scene bg interior
     $ Abigail = "Abigail"
