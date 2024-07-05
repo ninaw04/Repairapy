@@ -17,23 +17,23 @@ init python:
             return
         
         if drags[0].drag_name == "head" and drop.drag_name == "headhb":
-            drags[0].snap(drop.x-55,drop.y-190)
+            drags[0].snap(drop.x-45,drop.y-190)
             handle_snapping(drags[0])
 
         if drags[0].drag_name == "armL" and drop.drag_name == "armhb":
-            drags[0].snap(drop.x-90,drop.y-45)
+            drags[0].snap(drop.x-80,drop.y-45)
             handle_snapping(drags[0])
 
         if drags[0].drag_name == "armR" and drop.drag_name == "armhb":
-            drags[0].snap(drop.x+135,drop.y-55)
+            drags[0].snap(drop.x+155,drop.y-55)
             handle_snapping(drags[0])
 
         if drags[0].drag_name == "legL" and drop.drag_name == "leghb":
-            drags[0].snap(drop.x+30,drop.y+140)
+            drags[0].snap(drop.x+35,drop.y+140)
             handle_snapping(drags[0])
 
         if drags[0].drag_name == "legR" and drop.drag_name == "leghb":
-            drags[0].snap(drop.x+110,drop.y+140)
+            drags[0].snap(drop.x+130,drop.y+140)
             handle_snapping(drags[0])
 
         try:
