@@ -58,12 +58,18 @@ image broken doll = im.Scale("doll_broken_full.png", 200, 400)
 default heartCount = 0
 
 
-
-
 # Variables we may need
 define is_currently_minigame = False
 
     # starting at top left corner
+
+init python:
+    def inventoryUpdate(st):
+        pass
+    def inventoryEvents(event, x, y, at):
+        pass
+    def environmentEvents(event, x, y, at):
+        pass
 
 transform hop:
     linear 0.5 yoffset -150
@@ -75,23 +81,37 @@ screen displayHearts(count):
         hbox:
             for i in range(heartCount):
                 add im.Scale("heart.png",100,100)
-    
+
+# overlay for the inventory for minigames
+screen inventoryUI:
+    zorder 1
+    image "invetoryUI/inventory-icon-bg.png" xpos 0 ypos 0.8 at half_size
+    imagebutton auto "inventoryUI/inventory-icon-%s.png" xpos 0.03 ypos 0.825 at half_size
+
+screen inventory:
+    image "inventoryUI/inventory"
+
+
+transform half_size:
+    zoom 0.5
 
 # The game starts here.
 label start:
-
-    
-  
+    # $config.rollback_enabled = False
+    python:
+        environment_SM = SpriteManager(event=environmentEvents)
+        inventory_SM = SpriteManager(update = inventoryUpdate, event = inventoryEvents)
+        environment_sprites = []
+        inventory_sprites = []
+        environment_items = []
+        inventory_items = []
+        inventory_item_names = ["Needle", "Thread", "Glue"]
    
-
+ 
     $ heartCount = 0
     $ Abigail = "???"
 
     scene bg interior
-
-    # Testing purposes :D
-    # jump tutorial_minigame_assembly
-
     play music "music/Night-in-Venice.mp3"
 
     # Show a background. This uses a placeholder by default, but you can
@@ -99,12 +119,7 @@ label start:
     # images directory to show it.
 
     scene bg interior
-
-    # Testing purposes :D
-    # jump tutorial_minigame
-
     play sound "audio/doorbell.wav"
-    
     pause 1.0
 
     show a neutral:
@@ -580,7 +595,6 @@ label tutorial_minigame_assembly:
             xalign 0.40
             yalign 0.6
 
-    # a "testing"
     $ tool = ""
     call screen tutorial_doll
     $ is_currently_minigame = False
