@@ -169,7 +169,9 @@ label act1:
         show box_v1 at left
 
         "{i}The girl pulls out a box, inside is a dismembered doll.{/i}"
+        pause 
         show box_v1 at left
+      
         menu:
             "I don't think so.":
                 jump ending1
@@ -665,6 +667,8 @@ label fragment1:
     
     $ renpy.pause()
 
+    scene bg fragment 2b
+
     a "{b}Princess Caroline{/b}"
     
     scene bg interior
@@ -682,13 +686,20 @@ label fragment1:
 label fragment2:
     scene black
     "{i}I see... a younger looking Abigail.{/i}"
-    "{i}She's hugging her knees while her parents(?) argue in the background{/i}"
+    "{i}She's hugging her knees while two people are arguing in the background{/i}"
     unknown "I can't believe you did this again (REDACTED). How many times do we have to go through this?"
     unknown2 "Oh, please. Don't act like you're perfect. You're just as awful as me."
+    unknown "Excuse me?"
+    unknown2 "If you focused on the family more, maybe I wouldn't try to find someone else."
+    unknown "Don't you DARE drag our Abi into your mess."
+    unknown2 "HA! She's barely yours to begin with."
     "..."
-    "There's a princess... she's just like me!"
-    "Hm... not really.. I'm still waiting for my happily ever after."
-    "{i}Now her parents are going to her... and giving her the doll?{/i}"
+    a "Oh... they're talking about me again..."
+    a "...Do they fight because of me?"
+    a "I don't know what to do to stop it..."
+    "{i}Now her parents are going to her...?{/i}"
+    "They're giving Abigail... a doll."
+    "She smiles."
     scene bg interior
     $ Abigail = "Abigail"
     show a happy:
