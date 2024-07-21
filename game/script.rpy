@@ -593,9 +593,9 @@ label tutorial_minigame_assembly:
     show a neutral:
         xalign 0.85
         yalign 1.0
-    show broken doll:
-            xalign 0.40
-            yalign 0.6
+    # show broken doll:
+    #         xalign 0.40
+    #         yalign 0.6
 
     $ tool = ""
     call screen tutorial_doll
@@ -603,9 +603,9 @@ label tutorial_minigame_assembly:
     show a neutral:
         xalign 0.5
         yalign 0.75
-    show broken doll:
-        xalign 0.40
-        yalign 0.75
+    # show broken doll:
+    #     xalign 0.40
+    #     yalign 0.75
     
     jump fragment0
 
