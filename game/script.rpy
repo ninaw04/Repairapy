@@ -6,7 +6,7 @@
 
 define a = Character('[Abigail]', color="#cf850d", image="a", who_outlines=[(3, "#6b301c", 1, 1)])
 define i = Character("Idol", color="#f96995", image="pop_star.png")
-define doll = Character("Princess Caroline", image = "doll_broken_full.png")
+define doll = Character("Princess Caroline", image = "doll/doll_broken_full.png")
 define random = Character("Random")
 define friend = Character("Friend", color="#e02589d8", who_outlines=[(3, "#450756", 1, 1)])
 define other_random = Character("Other Random")
@@ -49,7 +49,7 @@ image idol sprite = im.Scale("lvl1 pop star wip.png", 563, 1000)
 
 
 image table = "bigtable.png"
-image broken doll = im.Scale("doll_broken_full.png", 200, 400)
+image broken doll = im.Scale("doll/doll_broken_full.png", 200, 400)
 
 
 

@@ -18,6 +18,7 @@ init python:
         
         if drags[0].drag_name == "head" and drop.drag_name == "headhb":
             drags[0].snap(drop.x-45,drop.y-190)
+            # drags[0].bottom()
             handle_snapping(drags[0])
 
         if drags[0].drag_name == "armL" and drop.drag_name == "armhb":
@@ -47,88 +48,17 @@ screen tutorial_doll:
     add 'bg tabletop.png'
 
     # use toolbar
+    add minigameDragGroup
 
-    draggroup:
-        drag:
-            drag_name "armL"
-            child "images/doll_broken_armL.png"
-            xpos 150
-            ypos 400
-            droppable False
-            draggable True
-            dragged drag_placed
-            drag_raise True
-            focus_mask True
+default armL = Drag(d = "images/doll/doll_broken_armL.png", drag_name = "armL", xpos = 150, ypos = 400, drag_raise = True, droppable = False, draggable = True, dragged = drag_placed)
+default armR = Drag(d = "images/doll/doll_broken_armR.png", drag_name = "armR", xpos = 150, ypos = 700, drag_raise = True, droppable = False, draggable = True, dragged = drag_placed)
+default head = Drag(d = "images/doll/doll_broken_head.png", drag_name = "head", xpos = 100, ypos = 50, drag_raise = True, droppable = False, draggable = True, dragged = drag_placed)
+default torso = Drag(d = "images/doll/doll_broken_torso.png", drag_name = "torso", align=(0.35,0.50), drag_raise = True, droppable = False, draggable = True, dragged = drag_placed)
+default legL = Drag(d = "images/doll/doll_broken_legL.png", drag_name = "legL", xpos = 450, ypos = 300, drag_raise = True, droppable = False, draggable = True, dragged = drag_placed)
+default legR = Drag(d = "images/doll/doll_broken_legR.png", drag_name = "legR", xpos = 450, ypos = 575, drag_raise = True, droppable = False, draggable = True, dragged = drag_placed)
+    
+default headhb = Drag(d = "images/hitbox.png", drag_name = "headhb", align=(0.35,0.35), drag_raise = True, droppable = True, draggable = False)
+default armhb = Drag(d = "images/hitbox.png", drag_name = "armhb", align=(0.35,0.50), drag_raise = True, droppable = True, draggable = False)
+default leghb = Drag(d = "images/hitbox.png", drag_name = "leghb", align=(0.35,0.65), drag_raise = True, droppable = True, draggable = False)
 
-        drag:
-            drag_name "armR"
-            child "images/doll_broken_armR.png"
-            xpos 150
-            ypos 700
-            droppable False
-            draggable True
-            dragged drag_placed
-            drag_raise True
-            focus_mask True
-
-        drag:
-            drag_name "head"
-            child "images/doll_broken_head.png"
-            xpos 100
-            ypos 50
-            droppable False
-            draggable True
-            dragged drag_placed
-            focus_mask True
-
-        drag:
-            drag_name "torso"
-            child "images/doll_broken_torso.png"
-            xalign .35
-            yalign .50
-            droppable False
-            draggable False
-
-        drag:
-            drag_name "legL"
-            child "images/doll_broken_legL.png"
-            xpos 450
-            ypos 300
-            droppable False
-            draggable True
-            dragged drag_placed
-            focus_mask True
-
-        drag:
-            drag_name "legR"
-            child "images/doll_broken_legR.png"
-            xpos 450
-            ypos 575
-            droppable False
-            draggable True
-            dragged drag_placed
-            focus_mask True
-
-        drag:
-            drag_name "headhb"
-            child "images/hitbox.png"
-            xalign .35
-            yalign .35
-            droppable True
-            draggable False
-
-        drag:
-            drag_name "armhb"
-            child "images/hitbox.png"
-            xalign .35
-            yalign .50
-            droppable True
-            draggable False
-
-        drag:
-            drag_name "leghb"
-            child "images/hitbox.png"
-            xalign .35
-            yalign .65
-            droppable True
-            draggable False
+default minigameDragGroup = DragGroup(armL, armR, head, torso, legL, legR, headhb, armhb, leghb)
