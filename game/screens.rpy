@@ -101,7 +101,7 @@ screen say(who, what):
     window:
         id "window"
 
-        if is_currently_minigame == True:
+        if current_minigame == "tutorial_minigame_assembly":
             xalign 0.85
             yalign 0.20
             ysize gui.textbox_height
@@ -111,12 +111,12 @@ screen say(who, what):
         if who is not None:
 
             window:
-                if is_currently_minigame == True:
+                if current_minigame == "tutorial_minigame_assembly":
                     xalign 0.7
                 id "namebox"
                 style "namebox"
                 text who id "who"
-        if is_currently_minigame == True:
+        if current_minigame == "tutorial_minigame_assembly":
             text what id "what" xalign 0.7
         else:
             text what id "what"

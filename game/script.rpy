@@ -25,24 +25,24 @@ define config.adv_nvl_transition = None
 define config.nvl_adv_transition = Dissolve(0.3)
 
 #resizing images
-image a neutral = im.Scale("tutorial_girl_neutral.png", 440, 709)
-image a happy = im.Scale("tutorial_girl_happy.png", 440, 709)
-image a happy_eyesclosed = im.Scale("tutorial_girl_happy_eyesclosed.png", 440, 709)
-image a sad = im.Scale("tutorial_girl_sad.png", 440, 709)
-image a shocked = im.Scale("tutorial_girl_shocked.png", 440, 709)
-image a relaxed = im.Scale("tutorial_girl_relaxed.png", 440, 709)
+image a neutral = im.Scale("abigail/tutorial_girl_neutral.png", 440, 709)
+image a happy = im.Scale("abigail/tutorial_girl_happy.png", 440, 709)
+image a happy_eyesclosed = im.Scale("abigail/tutorial_girl_happy_eyesclosed.png", 440, 709)
+image a sad = im.Scale("abigail/tutorial_girl_sad.png", 440, 709)
+image a shocked = im.Scale("abigail/tutorial_girl_shocked.png", 440, 709)
+image a relaxed = im.Scale("abigail/tutorial_girl_relaxed.png", 440, 709)
 
-#image a neutral = im.Scale("side tutorial_girl_neutral.png", 350, 350)
-#image a happy = im.Scale("side tutorial_girl_happy.png", 350, 350)
-#image a happy_eyesclosed = im.Scale("side tutorial_girl_happy_eyesclosed.png", 350, 350)
-#image a sad = im.Scale("side tutorial_girl_sad.png", 350, 350)
-#image a shocked = im.Scale("side tutorial_girl_shocked.png", 350, 350)
+#image a neutral = im.Scale("abigail/side tutorial_girl_neutral.png", 350, 350)
+#image a happy = im.Scale("abigail/side tutorial_girl_happy.png", 350, 350)
+#image a happy_eyesclosed = im.Scale("abigail/side tutorial_girl_happy_eyesclosed.png", 350, 350)
+#image a sad = im.Scale("abigail/side tutorial_girl_sad.png", 350, 350)
+#image a shocked = im.Scale("abigail/side tutorial_girl_shocked.png", 350, 350)
 
-#image tutorial_girl neutral = im.Scale("tutorial_girl neutral.png", 440, 709)
-#image tutorial_girl happy = im.Scale("tutorial_girl happy.png", 440, 709)
-#image tutorial_girl happy_eyesclosed = im.Scale("tutorial_girl happy eyesclosed.png", 440, 709)
-#image tutorial_girl sad = im.Scale("tutorial_girl sad.png", 440, 709)
-#image tutorial_girl shocked = im.Scale("tutorial_girl shocked.png", 440, 709)
+#image tutorial_girl neutral = im.Scale("abigail/tutorial_girl neutral.png", 440, 709)
+#image tutorial_girl happy = im.Scale("abigail/tutorial_girl happy.png", 440, 709)
+#image tutorial_girl happy_eyesclosed = im.Scale("abigail/tutorial_girl happy eyesclosed.png", 440, 709)
+#image tutorial_girl sad = im.Scale("abigail/tutorial_girl sad.png", 440, 709)
+#image tutorial_girl shocked = im.Scale("abigail/tutorial_girl shocked.png", 440, 709)
 
 define i = Character("Idol", color="#f96995", image="pop_star.png")
 image idol sprite = im.Scale("lvl1 pop star wip.png", 563, 1000)
@@ -57,18 +57,87 @@ image broken doll = im.Scale("doll/doll_broken_full.png", 200, 400)
 
 default heartCount = 0
 
-
-# Variables we may need
-define is_currently_minigame = False
-
-    # starting at top left corner
-
 init python:
     def inventoryUpdate(st):
         pass
     def inventoryEvents(event, x, y, at):
         pass
     def environmentEvents(event, x, y, at):
+        if event.type == renpy.game_sd12.MOUSEMOTION: #HOVER
+            for item in environment_sprites:
+                if item.x <= x <= item.x + item.width and item.y <= y <= item.y + item.height:
+                    t = Transform(child= item.hover_image, zoom=0.5)
+                    item.set_child(t)
+                    environment_SM.redraw(0)
+                else:
+                    t = Transform(child= item.idle_image, zoom=0.5)
+                    item.set_child(t)
+                    environment_SM.redraw(0)
+        elif event.type == renpy.game_sd12.MOUSEBUTTONUP:
+            if event.button == 1:
+                for item in environment_sprites:
+                    # if item.x <= x <= item.x + item.width and item.y <= y <= item.y + item.height:
+                    if item.type == "key": # ITEM THAT CAN BE ADDED TO INVENTORY
+                        addToInventory(["key"])
+                    elif item.type == "armL" or item.type == "armR":
+                        characterSay(who = "random", what = ["Hmm, it appears that I have to sew this piece to the torso."])
+                    elif item.type == "legL" or item.type == "legR" or item.type == "head":
+                        characterSay(who = "random", what = ["Hmm, this joint of the doll seems like it needs some glue."])
+
+    def characterSay(who, what):
+        if isinstance(what, str):
+            renpy.call_screen("characterSay", who = who, what = what)
+        elif isinstance(what, list):
+            global dialogue
+            dialogue = {"who": who, "what": what}
+            renpy.show_screen("characterSay")
+            renpy.restart_interaction()
+
+    def repositionInventoryItems():
+        for i, item in enumerate(inventory_sprites):
+            if i == 0:
+                item.x = inventory_first_slot_x
+                item.y = inventory_slot_y
+                inventory_sprites[-1].original_x = item.x
+            else:
+                item.x = (inventory_first_slot_x + inventory_slot_size[0] * i) + (inventory_slot_padding * i)
+                item.y = inventory_slot_y
+                inventory_sprites[-1].original_x = item.x
+
+    def addToInventory(items):
+        for item in items:
+            inventory_items.append(item)
+            if item == "lantern": # ALL ITEMS
+                image = Image("inventoryItems/inventory-latern-unlit.png")
+            else:
+                image = Image("inventoryItems/{}.png".format(item))
+
+            t = Transform(child = image, zoom = 0.5)
+            inventory_sprites.append(inventory_SM.create(t))
+            inventory_sprites[-1].width = inventory_slot_size[0]
+            inventory_sprites[-1].height = inventory_slot_size[1]
+            inventory_sprites[-1].type = item
+            inventory_sprites[-1].image = image
+            inventory_sprites[-1].y = 608
+            inventory_sprites[-1].original_y = 608
+            inventory_sprites[-1].original_x = 0
+
+            if item == "lantern":
+                inventory_sprites[-1].state = "unlit"
+            else:
+                inventory_sprites[-1].state = "default"
+
+            for envitem in environment_sprites:
+                if envitem.type == item:
+                    removeEnvironmentItem(item = item)
+                    break
+
+            repositionInventoryItems()
+
+            inventory_SM.redraw(0)
+            renpy.restart_interaction()
+
+    def inventoryArrows(button):
         pass
 
 transform hop:
@@ -85,12 +154,52 @@ screen displayHearts(count):
 # overlay for the inventory for minigames
 screen inventoryUI:
     zorder 1
-    image "invetoryUI/inventory-icon-bg.png" xpos 0 ypos 0.8 at half_size
-    imagebutton auto "inventoryUI/inventory-icon-%s.png" xpos 0.03 ypos 0.825 at half_size
+    image "inventoryUI/inventory-icon-bg.png" xpos 0 ypos 0.8 at half_size
+    imagebutton auto "inventoryUI/inventory-icon-%s.png" action If(renpy.get_screen("inventory") == None, true= Show("inventory"), false= Hide("inventory")) xpos 0.03 ypos 0.825 at half_size
 
 screen inventory:
-    image "inventoryUI/inventory"
+    image "inventoryUI/inventory-bg.png" xpos 0.17 ypos 0.8 at half_size
+    image "inventoryUI/inventory-slots.png" xpos 0.274 ypos 0.845 at half_size
+    imagebutton idle If(inventory_rb_enabled == True, true="inventoryUI/inventory-arrow-right-enabled-idle.png", false="inventoryUI/inventory-arrow-right-disabled.png") hover If(inventory_rb_enabled == True, true="inventoryUI/inventory-arrow-right-enabled-hober.png", false="inventoryUI/inventory-arrow-right-disabled.png") action Function(inventoryArrows, button="right") xpos 0.921 ypos 0.86 at half_size
 
+    imagebutton idle If(inventory_lb_enabled == True, true="inventoryUI/inventory-arrow-left-enabled-idle.png", false="inventoryUI/inventory-arrow-left-disabled.png") hover If(inventory_lb_enabled == True, true="inventoryUI/inventory-arrow-left-enabled-hober.png", false="inventoryUI/inventory-arrow-left-disabled.png") action Function(inventoryArrows, button="left") xpos 0.202 ypos 0.86 at half_size
+
+    add inventory_SM
+
+# screen for characterSay overlay in minigames
+screen characterSay(who = None, what = None):
+    modal True
+    zorder 6
+    style_prefix "say"
+
+    window:
+        id "window"
+        window:
+            padding (20, 20)
+            id "namebox"
+            style "namebox"
+            if who is not None:
+                text who id "who"
+            else:
+                text dialogue["who"]
+
+        if what is not None:
+            text what id "what" xpos 0.25 ypos 0.4 xanchor 0.0
+        else:
+            text dialogue["what"][0] xpos 0.25 ypos 0.4 xanchor 0.0
+
+    button:
+        xfill True
+        yfill True
+        if what is None:
+            action If(len(dialogue["what"]) > 1, true= RemoveFromSet(dialogue["what"], 0), false= [Hide("characterSay"), SetVariable("dialgoue", {})])
+        else:
+            action Return(True)
+
+    ## If there's a side image, display it above the text. Do not display on the
+    ## phone variant - there's no room.
+    if not renpy.variant("small"):
+        add SideImage() xalign 0.0 yalign 1.0
 
 transform half_size:
     zoom 0.5
@@ -98,14 +207,28 @@ transform half_size:
 # The game starts here.
 label start:
     # $config.rollback_enabled = False
-    python:
-        environment_SM = SpriteManager(event=environmentEvents)
-        inventory_SM = SpriteManager(update = inventoryUpdate, event = inventoryEvents)
-        environment_sprites = []
-        inventory_sprites = []
-        environment_items = []
-        inventory_items = []
-        inventory_item_names = ["Needle", "Thread", "Glue"]
+    
+    $environment_SM = SpriteManager(event=environmentEvents)
+    $inventory_SM = SpriteManager(update = inventoryUpdate, event = inventoryEvents)
+    $environment_sprites = []
+    $inventory_sprites = []
+    $environment_items = []
+    $inventory_items = []
+    $inventory_item_names = ["needle", "thread", "glue"]
+    $current_minigame = "none"
+    $inventory_rb_enabled = False
+    $inventory_lb_enabled = False
+    $inventory_slot_size = (215/2, 196/2)
+    $inventory_slot_padding = 22/2
+    $inventory_first_slot_x = 520
+    $inventory_slot_y = 900
+    $dialogue = {}
+
+    $addToInventory(["glue"])
+    $addToInventory(["needle"])
+    $addToInventory(["thread"])
+    
+    show screen inventoryUI
    
  
     $ heartCount = 0
@@ -589,7 +712,7 @@ label closedCutscene:
     $ renpy.pause(1.0, hard=True)
     return
 label tutorial_minigame_assembly:
-    $ is_currently_minigame = True
+    $ current_minigame = "tutorial_minigame_assembly"
     show a neutral:
         xalign 0.85
         yalign 1.0
@@ -599,7 +722,7 @@ label tutorial_minigame_assembly:
 
     $ tool = ""
     call screen tutorial_doll
-    $ is_currently_minigame = False
+    $ current_minigame = "none"
     show a neutral:
         xalign 0.5
         yalign 0.75
