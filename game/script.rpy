@@ -63,17 +63,17 @@ init python:
     def inventoryEvents(event, x, y, at):
         pass
     def environmentEvents(event, x, y, at):
-        if event.type == renpy.game_sd12.MOUSEMOTION: #HOVER
-            for item in environment_sprites:
-                if item.x <= x <= item.x + item.width and item.y <= y <= item.y + item.height:
-                    t = Transform(child= item.hover_image, zoom=0.5)
-                    item.set_child(t)
-                    environment_SM.redraw(0)
-                else:
-                    t = Transform(child= item.idle_image, zoom=0.5)
-                    item.set_child(t)
-                    environment_SM.redraw(0)
-        elif event.type == renpy.game_sd12.MOUSEBUTTONUP:
+        # if event.type == renpy.pygame_sdl2.MOUSEMOTION: #HOVER
+        #     for item in environment_sprites:
+        #         if item.x <= x <= item.x + item.width and item.y <= y <= item.y + item.height:
+        #             t = Transform(child= item.hover_image, zoom=0.5)
+        #             item.set_child(t)
+        #             environment_SM.redraw(0)
+        #         else:
+        #             t = Transform(child= item.idle_image, zoom=0.5)
+        #             item.set_child(t)
+        #             environment_SM.redraw(0)
+        if event.type == renpy.pygame_sdl2.MOUSEBUTTONUP:
             if event.button == 1:
                 for item in environment_sprites:
                     # if item.x <= x <= item.x + item.width and item.y <= y <= item.y + item.height:
@@ -206,7 +206,8 @@ transform half_size:
 
 # The game starts here.
 label start:
-    # $config.rollback_enabled = False
+    $config.rollback_enabled = False
+    $quick_menu = False
     
     $environment_SM = SpriteManager(event=environmentEvents)
     $inventory_SM = SpriteManager(update = inventoryUpdate, event = inventoryEvents)
@@ -229,13 +230,14 @@ label start:
     $addToInventory(["thread"])
     
     show screen inventoryUI
-   
+    # jump setup_tutorial_doll
  
     $ heartCount = 0
     $ Abigail = "???"
 
     scene bg interior
     play music "music/Night-in-Venice.mp3"
+    jump setup_cracks
 
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the
