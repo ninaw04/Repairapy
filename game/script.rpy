@@ -61,7 +61,16 @@ init python:
     def inventoryUpdate(st):
         pass
     def inventoryEvents(event, x, y, at):
-        pass
+        if event.type == renpy.pygame_sdl2.MOUSEMOTION:
+            for item in inventory_sprites:
+                if item.x <= x <= item.x + item.width and item.y <= y <= item.y + item.height:
+                    renpy.show_screen("inventoryItemMenu", item=item)
+                    renpy.restart_interaction()
+                    break
+                else:
+                    renpy.hide_screen("inventoryItemMenu")
+                    renpy.restart_interaction()
+
     def environmentEvents(event, x, y, at):
         # if event.type == renpy.pygame_sdl2.MOUSEMOTION: #HOVER
         #     for item in environment_sprites:
@@ -76,13 +85,18 @@ init python:
         if event.type == renpy.pygame_sdl2.MOUSEBUTTONUP:
             if event.button == 1:
                 for item in environment_sprites:
-                    # if item.x <= x <= item.x + item.width and item.y <= y <= item.y + item.height:
-                    if item.type == "key": # ITEM THAT CAN BE ADDED TO INVENTORY
-                        addToInventory(["key"])
-                    elif item.type == "armL" or item.type == "armR":
-                        characterSay(who = "random", what = ["Hmm, it appears that I have to sew this piece to the torso."])
-                    elif item.type == "legL" or item.type == "legR" or item.type == "head":
-                        characterSay(who = "random", what = ["Hmm, this joint of the doll seems like it needs some glue."])
+                    if item.x <= x <= item.x + item.width and item.y <= y <= item.y + item.height:
+                        if item.type == "key": # ITEM THAT CAN BE ADDED TO INVENTORY
+                            addToInventory(["key"])
+                        elif item.type == "armL" or item.type == "armR":
+                            characterSay(who = "random", what = ["Hmm, it appears that I have to sew this piece to the torso."])
+                        elif item.type == "legL" or item.type == "legR" or item.type == "head":
+                            characterSay(who = "random", what = ["Hmm, this joint of the doll seems like it needs some glue."])
+                        elif item.type == "full":
+                            characterSay(who = "random", what = ["Hmm, what can I use to fill the cracks?"])
+
+    def startDrag(item):
+        pass
 
     def characterSay(who, what):
         if isinstance(what, str):
@@ -129,13 +143,19 @@ init python:
 
             for envitem in environment_sprites:
                 if envitem.type == item:
-                    removeEnvironmentItem(item = item)
+                    removeEnvironmentItem(item = envitem)
                     break
 
             repositionInventoryItems()
 
             inventory_SM.redraw(0)
+            environment_SM.redraw(0)
             renpy.restart_interaction()
+
+    def removeEnvironmentItem(item):
+        item.destroy()
+        environment_sprites.pop(environment_sprites.index(item))
+        environment_items.pop(environment_items.index(item.type))
 
     def inventoryArrows(button):
         pass
@@ -152,19 +172,53 @@ screen displayHearts(count):
                 add im.Scale("heart.png",100,100)
 
 # overlay for the inventory for minigames
-screen inventoryUI:
-    zorder 1
-    image "inventoryUI/inventory-icon-bg.png" xpos 0 ypos 0.8 at half_size
-    imagebutton auto "inventoryUI/inventory-icon-%s.png" action If(renpy.get_screen("inventory") == None, true= Show("inventory"), false= Hide("inventory")) xpos 0.03 ypos 0.825 at half_size
+# screen inventoryUI:
+#     zorder 1
+    # image "inventoryUI/inventory-icon-bg.png" xpos 0 ypos 0.8 at half_size
+    # imagebutton auto "inventoryUI/inventory-icon-%s.png" action If(renpy.get_screen("inventory") == None, true= Show("inventory"), false= Hide("inventory")) xpos 0.03 ypos 0.825 at half_size
 
 screen inventory:
-    image "inventoryUI/inventory-bg.png" xpos 0.17 ypos 0.8 at half_size
+    image "inventoryUI/inventory-bg.png" xpos 0.205 ypos 0.813 at half_size
     image "inventoryUI/inventory-slots.png" xpos 0.274 ypos 0.845 at half_size
-    imagebutton idle If(inventory_rb_enabled == True, true="inventoryUI/inventory-arrow-right-enabled-idle.png", false="inventoryUI/inventory-arrow-right-disabled.png") hover If(inventory_rb_enabled == True, true="inventoryUI/inventory-arrow-right-enabled-hober.png", false="inventoryUI/inventory-arrow-right-disabled.png") action Function(inventoryArrows, button="right") xpos 0.921 ypos 0.86 at half_size
+    # imagebutton idle If(inventory_rb_enabled == True, true="inventoryUI/inventory-arrow-right-enabled-idle.png", false="inventoryUI/inventory-arrow-right-disabled.png") hover If(inventory_rb_enabled == True, true="inventoryUI/inventory-arrow-right-enabled-hober.png", false="inventoryUI/inventory-arrow-right-disabled.png") action Function(inventoryArrows, button="right") xpos 0.921 ypos 0.86 at half_size
 
-    imagebutton idle If(inventory_lb_enabled == True, true="inventoryUI/inventory-arrow-left-enabled-idle.png", false="inventoryUI/inventory-arrow-left-disabled.png") hover If(inventory_lb_enabled == True, true="inventoryUI/inventory-arrow-left-enabled-hober.png", false="inventoryUI/inventory-arrow-left-disabled.png") action Function(inventoryArrows, button="left") xpos 0.202 ypos 0.86 at half_size
+    # imagebutton idle If(inventory_lb_enabled == True, true="inventoryUI/inventory-arrow-left-enabled-idle.png", false="inventoryUI/inventory-arrow-left-disabled.png") hover If(inventory_lb_enabled == True, true="inventoryUI/inventory-arrow-left-enabled-hober.png", false="inventoryUI/inventory-arrow-left-disabled.png") action Function(inventoryArrows, button="left") xpos 0.202 ypos 0.86 at half_size
 
     add inventory_SM
+
+screen inventoryItemMenu(item):
+    zorder 7
+    frame:
+        xysize (inventory_slot_size[0], inventory_slot_size[1])
+        background "#ffffff30"
+        xpos item.x
+        ypos item.y
+        imagebutton auto "inventoryUI/view-inventory-item-%s.png" align (0.0, 0.5) at half_size action [Show("inspectItem", items=[item.type]), Hide("inventoryItemMenu")]
+        imagebutton auto "inventoryUI/use-inventory-item-%s.png" align (1.0, 0.5) at half_size action [Function(startDrag, item=item), Hide("inventoryItemMenu")]
+
+screen inspectItem(items):
+    modal True
+    zorder 4
+    button:
+        xfill True
+        yfill True
+        action If(len(items) > 1, true = RemoveFromSet(items, items[0]), false = [Hide("inspectItem"), If(len(dialogue) > 0, true = Show("characterSay"), false = NullAction())])
+        image "itemsPopUp/items-pop-up-bg.png" align (0.5, 0.5) at half_size
+
+        # IF IMAGE NAME CONTAINS A DIFFERENT CHARACTER THAN ITEM NAME
+        python:
+            item_name = ""
+            for name in inventory_item_names:
+                temp_name = name.replace("_", "-")
+                if temp_name.lower == items[0]:
+                    item_name = name
+
+        text "{}".format(item_name) size 20 align (0.5, 0.25)
+        if items[0] == "lantern":
+            $lantern_state = inventory_sprites[inventory_items.index("lantern")].state
+            image "itemsPopUp/{}-{}-pop-up.png".format("lantern", lantern_state) align (0.5, 0.5) at half_size
+        else:
+            image "itemsPopUp/{}-pop-up.png".format(items[0]) align (0.5, 0.5) at half_size
 
 # screen for characterSay overlay in minigames
 screen characterSay(who = None, what = None):
@@ -192,7 +246,7 @@ screen characterSay(who = None, what = None):
         xfill True
         yfill True
         if what is None:
-            action If(len(dialogue["what"]) > 1, true= RemoveFromSet(dialogue["what"], 0), false= [Hide("characterSay"), SetVariable("dialgoue", {})])
+            action If(len(dialogue["what"]) > 1, true= RemoveFromSet(dialogue["what"], 0), false= [Hide("characterSay"), SetVariable("dialogue", {})])
         else:
             action Return(True)
 
@@ -206,8 +260,8 @@ transform half_size:
 
 # The game starts here.
 label start:
-    $config.rollback_enabled = False
-    $quick_menu = False
+    # $config.rollback_enabled = False
+    # $quick_menu = False
     
     $environment_SM = SpriteManager(event=environmentEvents)
     $inventory_SM = SpriteManager(update = inventoryUpdate, event = inventoryEvents)
@@ -221,22 +275,25 @@ label start:
     $inventory_lb_enabled = False
     $inventory_slot_size = (215/2, 196/2)
     $inventory_slot_padding = 22/2
-    $inventory_first_slot_x = 520
-    $inventory_slot_y = 900
+    $inventory_first_slot_x = 525
+    $inventory_slot_y = 910
     $dialogue = {}
 
     $addToInventory(["glue"])
     $addToInventory(["needle"])
     $addToInventory(["thread"])
+    $addToInventory(["scissors"])
     
-    show screen inventoryUI
-    # jump setup_tutorial_doll
+    # show screen inventoryUI
  
     $ heartCount = 0
     $ Abigail = "???"
 
     scene bg interior
     play music "music/Night-in-Venice.mp3"
+
+    # TESTING
+    $ current_minigame = "tutorial_cracks"
     jump setup_cracks
 
     # Show a background. This uses a placeholder by default, but you can
