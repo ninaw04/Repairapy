@@ -59,8 +59,112 @@ default heartCount = 0
 
 init python:
     def inventoryUpdate(st):
-        pass
+        if inventory_drag == True:
+            for item in inventory_sprites:
+                if item.type == item_dragged:
+                    item.x = mousepos[0] - item.width / 2
+                    item.y = mousepos[1] - item.height / 2
+                    item.zorder = 99
+            return 0
+        return None
+
     def inventoryEvents(event, x, y, at):
+        global mousepos
+        global dialogue
+        global inventory_drag
+        global i_overlap
+        global ie_overlap
+        if event.type == renpy.pygame_sdl2.MOUSEBUTTONUP:
+            if event.button == 1:
+                for item1 in inventory_sprites:
+                    if item1.visible == True:
+                        if item1.x <= x <= item1.x + item1.width and item1.y <= y <= item1.y + item1.height:
+                            inventory_drag = False
+                            i_combine = False
+                            ie_combine = False
+                            for item2 in inventory_sprites:
+                                items_overlap = checkItemsOverlap(item1, item2)
+                                if items_overlap == True:
+                                    i_overlap = True  #WHERE WE PUT ALL THE INVENTORY INTERACTIONS
+                                    # if (item1.type == "needle" or item1.type == "thread") and (item2.type == "needle" or item2.type == "thread"):
+                                    #     i_combine = True
+                                    #     if item1.type == "needle":
+                                    #         removeInventoryItem(item1)
+                                    #     else:
+                                    #         removeInventoryItem(item2)
+
+                                    #     needle_image = Image("inventoryItems/needle_thread.png")
+                                    #     t = Transform(child = needle_image, zoom = 0.5)
+                                    #     inventory_sprites[inventory_items.index("needle")].set_child(t)
+                                    #     inventory_sprites[inventory_items.index("needle")].item_image = needle_image
+                                    #     inventory_sprites[inventory_items.index("needle")].state = "lit"
+                                    #     renpy.show_screen("inspectItem", ["needle"])
+                                    #     characterSay(who = "Claire", what = ["The needle is now threaded!"], inspectItem = True)
+                                    #     inventory_SM.redraw(0)
+                                    #     renpy.restart_interaction()
+
+                                    # if (item1.type == "matches" or item1.type == "lantern") and (item2.type == "matches" or item2.type == "lantern"):
+                                    #     i_combine = True
+                                    #     if item1.type == "matches":
+                                    #         removeInventoryItem(item1)
+                                    #     else:
+                                    #         removeInventoryItem(item2)
+
+                                        # lantern_image = Image("Inventory Items/inventory-lantern-lit.png")
+                                        # t = Transform(child = lantern_image, zoom = 0.5)
+                                        # inventory_sprites[inventory_items.index("lantern")].set_child(t)
+                                        # inventory_sprites[inventory_items.index("lantern")].item_image = lantern_image
+                                        # inventory_sprites[inventory_items.index("lantern")].state = "lit"
+                                        # renpy.show_screen("inspectItem", ["lantern"])
+                                        # characterSay(who = "Claire", what = ["The lantern is now lit!"], inspectItem = True)
+                                        # inventory_SM.redraw(0)
+                                        # renpy.restart_interaction()
+
+                                    #     break
+                                    # else:
+                                    #     item1.x = item1.original_x
+                                    #     item1.y = item1.original_y
+                                    #     item1.zorder = 0
+                                    #     characterSay(who = "Shop Keeper", what = ["Hmm, that doesn't seem to work.", "Try something else."])
+                                    #     break
+                                    break
+                            if i_combine == False:
+                                for item3 in environment_sprites:
+                                    items_overlap = checkItemsOverlap(item1, item3)
+                                    if items_overlap == True:
+                                        ie_overlap = True
+
+                                        # if item1.type == "key" and item3.type == "box":
+                                        #     ie_combine = True
+                                        #     removeInventoryItem(item1)
+                                        #     removeEnvironmentItem(item3)
+                                        #     addToInventory(["secateur", "matches"])
+                                        #     renpy.show_screen("inspectItem", ["secateur", "matches"])
+                                        #     characterSay(who = "Claire", what = ["This tool might come in handy.", "But for what?"], inspectItem = True)
+                                        #     inventory_SM.redraw(0)
+                                        #     environment_SM.redraw(0)
+                                        #     renpy.restart_interaction()
+                                        #     break
+                                        # elif item1.type == "secateur" and item3.type == "door-vines":
+                                        #     ie_combine = True
+                                        #     removeInventoryItem(item1)
+                                        #     removeEnvironmentItem(item3)
+                                        #     characterSay(who = "Claire", what = ["I can open the door now!"], jump_to = "setupScene2") # jump to setupScene2 with dialogue first.
+                                        #     inventory_SM.redraw(0)
+                                        #     environment_SM.redraw(0)
+                                        #     renpy.restart_interaction()
+                                        #     break
+                                        # else:
+                                        #     item1.x = item1.original_x
+                                        #     item1.y = item1.original_y
+                                        #     item1.zorder = 0
+                                        #     characterSay(who = "Claire", what = ["Hmm, that doesn't seem to work.", "Try something else."])
+                                        #     break
+                            if i_combine == False and ie_combine == False:
+                                item1.x = item1.original_x
+                                item1.y = item1.original_y
+                                item1.zorder = 0
+        
         if event.type == renpy.pygame_sdl2.MOUSEMOTION:
             for item in inventory_sprites:
                 if item.x <= x <= item.x + item.width and item.y <= y <= item.y + item.height:
@@ -89,14 +193,29 @@ init python:
                         if item.type == "key": # ITEM THAT CAN BE ADDED TO INVENTORY
                             addToInventory(["key"])
                         elif item.type == "armL" or item.type == "armR":
-                            characterSay(who = "random", what = ["Hmm, it appears that I have to sew this piece to the torso."])
+                            characterSay(who = "Shop Keeeper", what = ["Hmm, it appears that I have to sew this piece to the torso."])
                         elif item.type == "legL" or item.type == "legR" or item.type == "head":
-                            characterSay(who = "random", what = ["Hmm, this joint of the doll seems like it needs some glue."])
-                        elif item.type == "full":
-                            characterSay(who = "random", what = ["Hmm, what can I use to fill the cracks?"])
+                            characterSay(who = "Shop Keeeper", what = ["Hmm, this joint of the doll seems like it needs some glue."])
+                        elif item.type == "crack1234":
+                            characterSay(who = "Shop Keeeper", what = ["Hmm, what can I use to fill the cracks?"])
+
+                global i_overlap
+                global ie_overlap
+                i_overlap = False
+                ie_overlap = False
 
     def startDrag(item):
-        pass
+        global inventory_drag
+        global item_dragged
+        inventory_drag = True
+        item_dragged = item.type
+        inventory_SM.redraw(0)
+
+    def checkItemsOverlap(item1, item2):
+        if abs((item1.x + item1.width / 2) - (item2.x + item2.width / 2)) * 2 < item1.width + item2.width and abs((item1.y + item1.height / 2) - (item2.y + item2.height / 2)) * 2 < item1.height + item2.height and item1.type != item2.type:
+            return True
+        else:
+            return False
 
     def characterSay(who, what):
         if isinstance(what, str):
@@ -108,15 +227,32 @@ init python:
             renpy.restart_interaction()
 
     def repositionInventoryItems():
+        global inventory_lb_enabled
+        global inventory_rb_enabled
+
         for i, item in enumerate(inventory_sprites):
             if i == 0:
                 item.x = inventory_first_slot_x
-                item.y = inventory_slot_y
                 inventory_sprites[-1].original_x = item.x
             else:
                 item.x = (inventory_first_slot_x + inventory_slot_size[0] * i) + (inventory_slot_padding * i)
-                item.y = inventory_slot_y
                 inventory_sprites[-1].original_x = item.x
+            if item.x < inventory_first_slot_x or item.x > (inventory_first_slot_x + (item.width * 7)) + (inventory_slot_padding * 5):
+                setItemVisibility(item = item, visible = False)
+            elif item != "":
+                setItemVisibility(item = item, visible = True)
+
+            if len(inventory_sprites) > 0:
+                if inventory_sprites[-1].visible == True:
+                    inventory_rb_enabled = False
+                else:
+                    inventory_rb_enabled = True
+                if inventory_sprites[0].visible == True:
+                    inventory_lb_enabled = False
+                else:
+                    inventory_lb_enabled = True
+
+        renpy.retain_after_load()
 
     def addToInventory(items):
         for item in items:
@@ -128,13 +264,16 @@ init python:
 
             t = Transform(child = image, zoom = 0.5)
             inventory_sprites.append(inventory_SM.create(t))
+            # inventory_sprites.append(inventory_SM.create(image))
             inventory_sprites[-1].width = inventory_slot_size[0]
             inventory_sprites[-1].height = inventory_slot_size[1]
             inventory_sprites[-1].type = item
             inventory_sprites[-1].image = image
-            inventory_sprites[-1].y = 608
-            inventory_sprites[-1].original_y = 608
+            inventory_sprites[-1].y = 910
+            inventory_sprites[-1].original_y = 910
             inventory_sprites[-1].original_x = 0
+            inventory_sprites[-1].visible = True
+
 
             if item == "lantern":
                 inventory_sprites[-1].state = "unlit"
@@ -159,6 +298,29 @@ init python:
 
     def inventoryArrows(button):
         pass
+
+    def setItemVisibility(item, visible):
+        if visible == False:
+            item.visible = False
+            t = Transform(child = item.image, zoom = 0.5, alpha = 0)
+            item.set_child(t)
+        else:
+            item.visible = True
+            t = Transform(child = item.image, zoom = 0.5, alpha = 100)
+            item.set_child(t)
+        inventory_SM.redraw(0)
+
+    def prepareLoad():
+        global dialogue
+        global inventory_drag
+        for item in inventory_sprites:
+            if item_dragged == item.type:
+                item.x = item.original_x
+                item.y = item.original_y
+                item.zorder = 0
+        dialogue = {}
+        inventory_drag = False
+        renpy.hide_screen("characterSay")
 
 transform hop:
     linear 0.5 yoffset -150
@@ -189,10 +351,10 @@ screen inventory:
 screen inventoryItemMenu(item):
     zorder 7
     frame:
-        xysize (inventory_slot_size[0], inventory_slot_size[1])
+        xysize (int(inventory_slot_size[0]), int(inventory_slot_size[1]))
         background "#ffffff30"
-        xpos item.x
-        ypos item.y
+        xpos int(item.x)
+        ypos int(item.y)
         imagebutton auto "inventoryUI/view-inventory-item-%s.png" align (0.0, 0.5) at half_size action [Show("inspectItem", items=[item.type]), Hide("inventoryItemMenu")]
         imagebutton auto "inventoryUI/use-inventory-item-%s.png" align (1.0, 0.5) at half_size action [Function(startDrag, item=item), Hide("inventoryItemMenu")]
 
@@ -213,12 +375,14 @@ screen inspectItem(items):
                 if temp_name.lower == items[0]:
                     item_name = name
 
-        text "{}".format(item_name) size 20 align (0.5, 0.25)
+        text "{}".format(item_name) size 20 align (0, 0)
+        # text "{}".format(item_name) size 20 align (0.5, 0.25)
         if items[0] == "lantern":
             $lantern_state = inventory_sprites[inventory_items.index("lantern")].state
             image "itemsPopUp/{}-{}-pop-up.png".format("lantern", lantern_state) align (0.5, 0.5) at half_size
         else:
-            image "itemsPopUp/{}-pop-up.png".format(items[0]) align (0.5, 0.5) at half_size
+            image "itemsPopUp/{}-pop-up.png".format(items[0]) align (0.5, 0.5)
+            # image "itemsPopUp/{}-pop-up.png".format(items[0]) align (0.5, 0.5) at half_size
 
 # screen for characterSay overlay in minigames
 screen characterSay(who = None, what = None):
@@ -269,7 +433,7 @@ label start:
     $inventory_sprites = []
     $environment_items = []
     $inventory_items = []
-    $inventory_item_names = ["needle", "thread", "glue"]
+    $inventory_item_names = ["needle", "thread", "glue", "scissors"]
     $current_minigame = "none"
     $inventory_rb_enabled = False
     $inventory_lb_enabled = False
@@ -278,6 +442,11 @@ label start:
     $inventory_first_slot_x = 525
     $inventory_slot_y = 910
     $dialogue = {}
+    $inventory_drag = False
+    $item_dragged = ""
+    $mousepos = (0.0, 0.0)
+    $i_overlap = False
+    $ie_overlap = False
 
     $addToInventory(["glue"])
     $addToInventory(["needle"])
