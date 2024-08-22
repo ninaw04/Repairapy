@@ -462,8 +462,8 @@ label start:
     play music "music/Night-in-Venice.mp3"
 
     # TESTING
-    $ current_minigame = "tutorial_cracks"
-    jump setup_cracks
+    # $ current_minigame = "tutorial_cracks"
+    # jump setup_cracks
 
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the
@@ -534,12 +534,14 @@ label act1:
         menu:
             "It appears that she has been injured really badly... no worries though, she will be healed in no time.":
                 # jump choices4
-                jump tutorial_minigame_assembly
+                # jump tutorial_minigame_assembly
+                jump selection4
             "How can a doll protect you? It's just a doll.":
                 a sad "Yeah... I guess so, but she has always been there for me..."
                 menu: 
                     "I guess that makes sense? I'll see what I can do.":
-                        jump tutorial_minigame_assembly
+                        # jump tutorial_minigame_assembly
+                        jump selection4
                     "Yeah, I don't think I want to help you.":
                         jump ending1
 
@@ -961,6 +963,7 @@ label tutorial_minigame_assembly:
     jump fragment0
 
 label tutorial_minigame_eye:
+    jump setup_cracks
     "eye minigame"
     jump fragment1
 label tutorial_minigame_stich:
